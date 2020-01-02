@@ -2,12 +2,15 @@ package cn.onesdream.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import com.baomidou.mybatisplus.annotations.TableName;
 import lombok.Data;
 
 /**
  * backend_user
  * @author 
  */
+@TableName("backend_user")
 @Data
 public class BackendUser implements Serializable {
     /**

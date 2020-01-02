@@ -2,12 +2,15 @@ package cn.onesdream.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import com.baomidou.mybatisplus.annotations.TableName;
 import lombok.Data;
 
 /**
  * data_dictionary
  * @author 
  */
+@TableName(value = "data_dictionary")
 @Data
 public class DataDictionary implements Serializable {
     /**

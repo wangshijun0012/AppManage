@@ -2,12 +2,15 @@ package cn.onesdream.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import com.baomidou.mybatisplus.annotations.TableName;
 import lombok.Data;
 
 /**
  * ad_promotion
  * @author 
  */
+@TableName(value = "ad_promotion")
 @Data
 public class AdPromotion implements Serializable {
     /**

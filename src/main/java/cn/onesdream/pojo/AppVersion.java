@@ -3,12 +3,15 @@ package cn.onesdream.pojo;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+
+import com.baomidou.mybatisplus.annotations.TableName;
 import lombok.Data;
 
 /**
  * app_version
  * @author 
  */
+@TableName(value = "app_version")
 @Data
 public class AppVersion implements Serializable {
     /**
