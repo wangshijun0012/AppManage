@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.onesdream.dao.AppInfoMapper">
+  <resultMap id="BaseResultMap" type="cn.onesdream.pojo.AppInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="softwareName" jdbcType="VARCHAR" property="softwareName" />
+    <result column="APKName" jdbcType="VARCHAR" property="APKName" />
+    <result column="supportROM" jdbcType="VARCHAR" property="supportROM" />
+    <result column="interfaceLanguage" jdbcType="VARCHAR" property="interfaceLanguage" />
+    <result column="softwareSize" jdbcType="DECIMAL" property="softwareSize" />
+    <result column="updateDate" jdbcType="DATE" property="updateDate" />
+    <result column="devId" jdbcType="BIGINT" property="devId" />
+    <result column="appInfo" jdbcType="VARCHAR" property="appInfo" />
+    <result column="status" jdbcType="BIGINT" property="status" />
+    <result column="onSaleDate" jdbcType="TIMESTAMP" property="onSaleDate" />
+    <result column="offSaleDate" jdbcType="TIMESTAMP" property="offSaleDate" />
+    <result column="flatformId" jdbcType="BIGINT" property="flatformId" />
+    <result column="categoryLevel3" jdbcType="BIGINT" property="categoryLevel3" />
+    <result column="downloads" jdbcType="BIGINT" property="downloads" />
+    <result column="createdBy" jdbcType="BIGINT" property="createdBy" />
+    <result column="creationDate" jdbcType="TIMESTAMP" property="creationDate" />
+    <result column="modifyBy" jdbcType="BIGINT" property="modifyBy" />
+    <result column="modifyDate" jdbcType="TIMESTAMP" property="modifyDate" />
+    <result column="categoryLevel1" jdbcType="BIGINT" property="categoryLevel1" />
+    <result column="categoryLevel2" jdbcType="BIGINT" property="categoryLevel2" />
+    <result column="logoPicPath" jdbcType="VARCHAR" property="logoPicPath" />
+    <result column="logoLocPath" jdbcType="VARCHAR" property="logoLocPath" />
+    <result column="versionId" jdbcType="BIGINT" property="versionId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, softwareName, APKName, supportROM, interfaceLanguage, softwareSize, updateDate, 
+    devId, appInfo, `status`, onSaleDate, offSaleDate, flatformId, categoryLevel3, downloads, 
+    createdBy, creationDate, modifyBy, modifyDate, categoryLevel1, categoryLevel2, logoPicPath, 
+    logoLocPath, versionId
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from app_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from app_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.onesdream.pojo.AppInfo" useGeneratedKeys="true">
+    insert into app_info (softwareName, APKName, supportROM, 
+      interfaceLanguage, softwareSize, updateDate, 
+      devId, appInfo, `status`, 
+      onSaleDate, offSaleDate, flatformId, 
+      categoryLevel3, downloads, createdBy, 
+      creationDate, modifyBy, modifyDate, 
+      categoryLevel1, categoryLevel2, logoPicPath, 
+      logoLocPath, versionId)
+    values (#{softwareName,jdbcType=VARCHAR}, #{APKName,jdbcType=VARCHAR}, #{supportROM,jdbcType=VARCHAR}, 
+      #{interfaceLanguage,jdbcType=VARCHAR}, #{softwareSize,jdbcType=DECIMAL}, #{updateDate,jdbcType=DATE}, 
+      #{devId,jdbcType=BIGINT}, #{appInfo,jdbcType=VARCHAR}, #{status,jdbcType=BIGINT}, 
+      #{onSaleDate,jdbcType=TIMESTAMP}, #{offSaleDate,jdbcType=TIMESTAMP}, #{flatformId,jdbcType=BIGINT}, 
+      #{categoryLevel3,jdbcType=BIGINT}, #{downloads,jdbcType=BIGINT}, #{createdBy,jdbcType=BIGINT}, 
+      #{creationDate,jdbcType=TIMESTAMP}, #{modifyBy,jdbcType=BIGINT}, #{modifyDate,jdbcType=TIMESTAMP}, 
+      #{categoryLevel1,jdbcType=BIGINT}, #{categoryLevel2,jdbcType=BIGINT}, #{logoPicPath,jdbcType=VARCHAR}, 
+      #{logoLocPath,jdbcType=VARCHAR}, #{versionId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.onesdream.pojo.AppInfo" useGeneratedKeys="true">
+    insert into app_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="softwareName != null">
+        softwareName,
+      </if>
+      <if test="APKName != null">
+        APKName,
+      </if>
+      <if test="supportROM != null">
+        supportROM,
+      </if>
+      <if test="interfaceLanguage != null">
+        interfaceLanguage,
+      </if>
+      <if test="softwareSize != null">
+        softwareSize,
+      </if>
+      <if test="updateDate != null">
+        updateDate,
+      </if>
+      <if test="devId != null">
+        devId,
+      </if>
+      <if test="appInfo != null">
+        appInfo,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="onSaleDate != null">
+        onSaleDate,
+      </if>
+      <if test="offSaleDate != null">
+        offSaleDate,
+      </if>
+      <if test="flatformId != null">
+        flatformId,
+      </if>
+      <if test="categoryLevel3 != null">
+        categoryLevel3,
+      </if>
+      <if test="downloads != null">
+        downloads,
+      </if>
+      <if test="createdBy != null">
+        createdBy,
+      </if>
+      <if test="creationDate != null">
+        creationDate,
+      </if>
+      <if test="modifyBy != null">
+        modifyBy,
+      </if>
+      <if test="modifyDate != null">
+        modifyDate,
+      </if>
+      <if test="categoryLevel1 != null">
+        categoryLevel1,
+      </if>
+      <if test="categoryLevel2 != null">
+        categoryLevel2,
+      </if>
+      <if test="logoPicPath != null">
+        logoPicPath,
+      </if>
+      <if test="logoLocPath != null">
+        logoLocPath,
+      </if>
+      <if test="versionId != null">
+        versionId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="softwareName != null">
+        #{softwareName,jdbcType=VARCHAR},
+      </if>
+      <if test="APKName != null">
+        #{APKName,jdbcType=VARCHAR},
+      </if>
+      <if test="supportROM != null">
+        #{supportROM,jdbcType=VARCHAR},
+      </if>
+      <if test="interfaceLanguage != null">
+        #{interfaceLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="softwareSize != null">
+        #{softwareSize,jdbcType=DECIMAL},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=DATE},
+      </if>
+      <if test="devId != null">
+        #{devId,jdbcType=BIGINT},
+      </if>
+      <if test="appInfo != null">
+        #{appInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=BIGINT},
+      </if>
+      <if test="onSaleDate != null">
+        #{onSaleDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="offSaleDate != null">
+        #{offSaleDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flatformId != null">
+        #{flatformId,jdbcType=BIGINT},
+      </if>
+      <if test="categoryLevel3 != null">
+        #{categoryLevel3,jdbcType=BIGINT},
+      </if>
+      <if test="downloads != null">
+        #{downloads,jdbcType=BIGINT},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=BIGINT},
+      </if>
+      <if test="creationDate != null">
+        #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null">
+        #{modifyBy,jdbcType=BIGINT},
+      </if>
+      <if test="modifyDate != null">
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="categoryLevel1 != null">
+        #{categoryLevel1,jdbcType=BIGINT},
+      </if>
+      <if test="categoryLevel2 != null">
+        #{categoryLevel2,jdbcType=BIGINT},
+      </if>
+      <if test="logoPicPath != null">
+        #{logoPicPath,jdbcType=VARCHAR},
+      </if>
+      <if test="logoLocPath != null">
+        #{logoLocPath,jdbcType=VARCHAR},
+      </if>
+      <if test="versionId != null">
+        #{versionId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.onesdream.pojo.AppInfo">
+    update app_info
+    <set>
+      <if test="softwareName != null">
+        softwareName = #{softwareName,jdbcType=VARCHAR},
+      </if>
+      <if test="APKName != null">
+        APKName = #{APKName,jdbcType=VARCHAR},
+      </if>
+      <if test="supportROM != null">
+        supportROM = #{supportROM,jdbcType=VARCHAR},
+      </if>
+      <if test="interfaceLanguage != null">
+        interfaceLanguage = #{interfaceLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="softwareSize != null">
+        softwareSize = #{softwareSize,jdbcType=DECIMAL},
+      </if>
+      <if test="updateDate != null">
+        updateDate = #{updateDate,jdbcType=DATE},
+      </if>
+      <if test="devId != null">
+        devId = #{devId,jdbcType=BIGINT},
+      </if>
+      <if test="appInfo != null">
+        appInfo = #{appInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=BIGINT},
+      </if>
+      <if test="onSaleDate != null">
+        onSaleDate = #{onSaleDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="offSaleDate != null">
+        offSaleDate = #{offSaleDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flatformId != null">
+        flatformId = #{flatformId,jdbcType=BIGINT},
+      </if>
+      <if test="categoryLevel3 != null">
+        categoryLevel3 = #{categoryLevel3,jdbcType=BIGINT},
+      </if>
+      <if test="downloads != null">
+        downloads = #{downloads,jdbcType=BIGINT},
+      </if>
+      <if test="createdBy != null">
+        createdBy = #{createdBy,jdbcType=BIGINT},
+      </if>
+      <if test="creationDate != null">
+        creationDate = #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null">
+        modifyBy = #{modifyBy,jdbcType=BIGINT},
+      </if>
+      <if test="modifyDate != null">
+        modifyDate = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="categoryLevel1 != null">
+        categoryLevel1 = #{categoryLevel1,jdbcType=BIGINT},
+      </if>
+      <if test="categoryLevel2 != null">
+        categoryLevel2 = #{categoryLevel2,jdbcType=BIGINT},
+      </if>
+      <if test="logoPicPath != null">
+        logoPicPath = #{logoPicPath,jdbcType=VARCHAR},
+      </if>
+      <if test="logoLocPath != null">
+        logoLocPath = #{logoLocPath,jdbcType=VARCHAR},
+      </if>
+      <if test="versionId != null">
+        versionId = #{versionId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.onesdream.pojo.AppInfo">
+    update app_info
+    set softwareName = #{softwareName,jdbcType=VARCHAR},
+      APKName = #{APKName,jdbcType=VARCHAR},
+      supportROM = #{supportROM,jdbcType=VARCHAR},
+      interfaceLanguage = #{interfaceLanguage,jdbcType=VARCHAR},
+      softwareSize = #{softwareSize,jdbcType=DECIMAL},
+      updateDate = #{updateDate,jdbcType=DATE},
+      devId = #{devId,jdbcType=BIGINT},
+      appInfo = #{appInfo,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=BIGINT},
+      onSaleDate = #{onSaleDate,jdbcType=TIMESTAMP},
+      offSaleDate = #{offSaleDate,jdbcType=TIMESTAMP},
+      flatformId = #{flatformId,jdbcType=BIGINT},
+      categoryLevel3 = #{categoryLevel3,jdbcType=BIGINT},
+      downloads = #{downloads,jdbcType=BIGINT},
+      createdBy = #{createdBy,jdbcType=BIGINT},
+      creationDate = #{creationDate,jdbcType=TIMESTAMP},
+      modifyBy = #{modifyBy,jdbcType=BIGINT},
+      modifyDate = #{modifyDate,jdbcType=TIMESTAMP},
+      categoryLevel1 = #{categoryLevel1,jdbcType=BIGINT},
+      categoryLevel2 = #{categoryLevel2,jdbcType=BIGINT},
+      logoPicPath = #{logoPicPath,jdbcType=VARCHAR},
+      logoLocPath = #{logoLocPath,jdbcType=VARCHAR},
+      versionId = #{versionId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
