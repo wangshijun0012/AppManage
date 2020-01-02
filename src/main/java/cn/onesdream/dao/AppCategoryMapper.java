@@ -7,10 +7,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Mapper
-public interface AppCategoryMapper extends BaseMapper {
+public interface AppCategoryMapper extends BaseMapper<AppCategory> {
     int deleteByPrimaryKey(Long id);
-
-    int insert(AppCategory record);
 
     int insertSelective(AppCategory record);
 

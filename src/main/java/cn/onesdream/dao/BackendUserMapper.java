@@ -7,10 +7,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Mapper
-public interface BackendUserMapper  extends BaseMapper {
+public interface BackendUserMapper  extends BaseMapper<BackendUser> {
     int deleteByPrimaryKey(Long id);
-
-    int insert(BackendUser record);
 
     int insertSelective(BackendUser record);
 

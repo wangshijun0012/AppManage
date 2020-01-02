@@ -7,10 +7,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Mapper
-public interface AppVersionMapper  extends BaseMapper {
+public interface AppVersionMapper  extends BaseMapper<AppVersion> {
     int deleteByPrimaryKey(Long id);
-
-    int insert(AppVersion record);
 
     int insertSelective(AppVersion record);
 

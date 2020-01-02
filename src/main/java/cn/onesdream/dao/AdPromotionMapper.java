@@ -7,10 +7,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Mapper
-public interface AdPromotionMapper extends BaseMapper {
+public interface AdPromotionMapper extends BaseMapper<AdPromotion> {
     int deleteByPrimaryKey(Long id);
-
-    int insert(AdPromotion record);
 
     int insertSelective(AdPromotion record);
 

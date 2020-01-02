@@ -7,10 +7,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Mapper
-public interface AppInfoMapper  extends BaseMapper {
+public interface AppInfoMapper  extends BaseMapper<AppInfo> {
     int deleteByPrimaryKey(Long id);
-
-    int insert(AppInfo record);
 
     int insertSelective(AppInfo record);
 

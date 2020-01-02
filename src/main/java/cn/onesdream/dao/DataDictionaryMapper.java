@@ -7,10 +7,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Mapper
-public interface DataDictionaryMapper  extends BaseMapper {
+public interface DataDictionaryMapper  extends BaseMapper<DataDictionary> {
     int deleteByPrimaryKey(Long id);
-
-    int insert(DataDictionary record);
 
     int insertSelective(DataDictionary record);
 
