@@ -42,7 +42,7 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
     </bean>
     <bean id="globalConfiguration" class="com.baomidou.mybatisplus.entity.GlobalConfiguration">
         <property name="idType" value="0"/>
-        <property name="tablePrefix" value="smbms_"/>
+        <property name="tablePrefix" value=""/>
         <!--规定自动生成的sql语句中的字段不使用下划线进行命名-->
         <property name="dbColumnUnderline" value="false"/>
     </bean>
