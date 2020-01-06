@@ -3,6 +3,7 @@ package cn.onesdream.pojo;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
 import lombok.Data;
 
@@ -32,6 +33,8 @@ public class BackendUser implements Serializable {
      * 用户角色类型（来源于数据字典表，分为：超管、财务、市场、运营、销售）
      */
     private Long userType;
+    @TableField(exist = false)
+    private String userTypeName;
 
     /**
      * 创建者（来源于backend_user用户表的用户id）

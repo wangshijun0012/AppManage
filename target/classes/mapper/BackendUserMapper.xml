@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.onesdream.dao.BackendUserMapper">
+  <resultMap id="BaseResultMap" type="cn.onesdream.pojo.BackendUser">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="userCode" jdbcType="VARCHAR" property="userCode" />
+    <result column="userName" jdbcType="VARCHAR" property="userName" />
+    <result column="userType" jdbcType="BIGINT" property="userType" />
+    <result column="createdBy" jdbcType="BIGINT" property="createdBy" />
+    <result column="creationDate" jdbcType="TIMESTAMP" property="creationDate" />
+    <result column="modifyBy" jdbcType="BIGINT" property="modifyBy" />
+    <result column="modifyDate" jdbcType="TIMESTAMP" property="modifyDate" />
+    <result column="userPassword" jdbcType="VARCHAR" property="userPassword" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, userCode, userName, userType, createdBy, creationDate, modifyBy, modifyDate, 
+    userPassword
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from backend_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from backend_user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.onesdream.pojo.BackendUser" useGeneratedKeys="true">
+    insert into backend_user (userCode, userName, userType, 
+      createdBy, creationDate, modifyBy, 
+      modifyDate, userPassword)
+    values (#{userCode,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{userType,jdbcType=BIGINT}, 
+      #{createdBy,jdbcType=BIGINT}, #{creationDate,jdbcType=TIMESTAMP}, #{modifyBy,jdbcType=BIGINT}, 
+      #{modifyDate,jdbcType=TIMESTAMP}, #{userPassword,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.onesdream.pojo.BackendUser" useGeneratedKeys="true">
+    insert into backend_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userCode != null">
+        userCode,
+      </if>
+      <if test="userName != null">
+        userName,
+      </if>
+      <if test="userType != null">
+        userType,
+      </if>
+      <if test="createdBy != null">
+        createdBy,
+      </if>
+      <if test="creationDate != null">
+        creationDate,
+      </if>
+      <if test="modifyBy != null">
+        modifyBy,
+      </if>
+      <if test="modifyDate != null">
+        modifyDate,
+      </if>
+      <if test="userPassword != null">
+        userPassword,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userCode != null">
+        #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null">
+        #{userType,jdbcType=BIGINT},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=BIGINT},
+      </if>
+      <if test="creationDate != null">
+        #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null">
+        #{modifyBy,jdbcType=BIGINT},
+      </if>
+      <if test="modifyDate != null">
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userPassword != null">
+        #{userPassword,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.onesdream.pojo.BackendUser">
+    update backend_user
+    <set>
+      <if test="userCode != null">
+        userCode = #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        userName = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null">
+        userType = #{userType,jdbcType=BIGINT},
+      </if>
+      <if test="createdBy != null">
+        createdBy = #{createdBy,jdbcType=BIGINT},
+      </if>
+      <if test="creationDate != null">
+        creationDate = #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null">
+        modifyBy = #{modifyBy,jdbcType=BIGINT},
+      </if>
+      <if test="modifyDate != null">
+        modifyDate = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userPassword != null">
+        userPassword = #{userPassword,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.onesdream.pojo.BackendUser">
+    update backend_user
+    set userCode = #{userCode,jdbcType=VARCHAR},
+      userName = #{userName,jdbcType=VARCHAR},
+      userType = #{userType,jdbcType=BIGINT},
+      createdBy = #{createdBy,jdbcType=BIGINT},
+      creationDate = #{creationDate,jdbcType=TIMESTAMP},
+      modifyBy = #{modifyBy,jdbcType=BIGINT},
+      modifyDate = #{modifyDate,jdbcType=TIMESTAMP},
+      userPassword = #{userPassword,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

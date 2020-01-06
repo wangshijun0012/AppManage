@@ -1,5 +1,8 @@
 package cn.onesdream.service;
 
+import cn.onesdream.pojo.BackendUser;
+
 public interface BackendUserService {
-    boolean isLogin(String username,String password);
+    BackendUser getTheUser(String username,String password);
+
 }

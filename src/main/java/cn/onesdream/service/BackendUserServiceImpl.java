@@ -1,9 +1,9 @@
 package cn.onesdream.service;
 
 import cn.onesdream.dao.BackendUserMapper;
+import cn.onesdream.dao.DataDictionaryMapper;
 import cn.onesdream.pojo.BackendUser;
-import cn.onesdream.pojo.DevUser;
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import cn.onesdream.pojo.DataDictionary;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -11,18 +11,24 @@ import javax.annotation.Resource;
 public class BackendUserServiceImpl implements BackendUserService {
     @Resource
     private BackendUserMapper backendUserMapper;
+    @Resource
+    private DataDictionaryMapper dataDictionaryMapper;
     @Override
-    public boolean isLogin(String username, String password) {
-
+    public BackendUser getTheUser(String username, String password) {
         if(username == null || "".equals(username) || password == null || "".equals(password)){
-            return false;
+            return null;
         }
+
         BackendUser backendUser = new BackendUser();
         backendUser.setUserCode(username);
         backendUser.setUserPassword(password);
-        if(backendUserMapper.selectOne(backendUser) != null){
-            return true;
-        };
-        return false;
+        BackendUser backendUser1 = backendUserMapper.selectOne(backendUser);
+
+        DataDictionary dictionary = new DataDictionary();
+        dictionary.setTypeCode("USER_TYPE");
+        dictionary.setValueId(backendUser1.getUserType());
+        backendUser1.setUserTypeName(dataDictionaryMapper.selectOne(dictionary).getValueName());
+
+        return backendUser1;
     }
 }
