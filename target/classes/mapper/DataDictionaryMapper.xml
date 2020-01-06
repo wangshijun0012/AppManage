@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.onesdream.dao.DataDictionaryMapper">
+  <resultMap id="BaseResultMap" type="cn.onesdream.pojo.DataDictionary">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="typeCode" jdbcType="VARCHAR" property="typeCode" />
+    <result column="typeName" jdbcType="VARCHAR" property="typeName" />
+    <result column="valueId" jdbcType="BIGINT" property="valueId" />
+    <result column="valueName" jdbcType="VARCHAR" property="valueName" />
+    <result column="createdBy" jdbcType="BIGINT" property="createdBy" />
+    <result column="creationDate" jdbcType="TIMESTAMP" property="creationDate" />
+    <result column="modifyBy" jdbcType="BIGINT" property="modifyBy" />
+    <result column="modifyDate" jdbcType="TIMESTAMP" property="modifyDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, typeCode, typeName, valueId, valueName, createdBy, creationDate, modifyBy, modifyDate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from data_dictionary
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from data_dictionary
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.onesdream.pojo.DataDictionary" useGeneratedKeys="true">
+    insert into data_dictionary (typeCode, typeName, valueId, 
+      valueName, createdBy, creationDate, 
+      modifyBy, modifyDate)
+    values (#{typeCode,jdbcType=VARCHAR}, #{typeName,jdbcType=VARCHAR}, #{valueId,jdbcType=BIGINT}, 
+      #{valueName,jdbcType=VARCHAR}, #{createdBy,jdbcType=BIGINT}, #{creationDate,jdbcType=TIMESTAMP}, 
+      #{modifyBy,jdbcType=BIGINT}, #{modifyDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.onesdream.pojo.DataDictionary" useGeneratedKeys="true">
+    insert into data_dictionary
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="typeCode != null">
+        typeCode,
+      </if>
+      <if test="typeName != null">
+        typeName,
+      </if>
+      <if test="valueId != null">
+        valueId,
+      </if>
+      <if test="valueName != null">
+        valueName,
+      </if>
+      <if test="createdBy != null">
+        createdBy,
+      </if>
+      <if test="creationDate != null">
+        creationDate,
+      </if>
+      <if test="modifyBy != null">
+        modifyBy,
+      </if>
+      <if test="modifyDate != null">
+        modifyDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="typeCode != null">
+        #{typeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="typeName != null">
+        #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="valueId != null">
+        #{valueId,jdbcType=BIGINT},
+      </if>
+      <if test="valueName != null">
+        #{valueName,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=BIGINT},
+      </if>
+      <if test="creationDate != null">
+        #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null">
+        #{modifyBy,jdbcType=BIGINT},
+      </if>
+      <if test="modifyDate != null">
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.onesdream.pojo.DataDictionary">
+    update data_dictionary
+    <set>
+      <if test="typeCode != null">
+        typeCode = #{typeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="typeName != null">
+        typeName = #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="valueId != null">
+        valueId = #{valueId,jdbcType=BIGINT},
+      </if>
+      <if test="valueName != null">
+        valueName = #{valueName,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        createdBy = #{createdBy,jdbcType=BIGINT},
+      </if>
+      <if test="creationDate != null">
+        creationDate = #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null">
+        modifyBy = #{modifyBy,jdbcType=BIGINT},
+      </if>
+      <if test="modifyDate != null">
+        modifyDate = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.onesdream.pojo.DataDictionary">
+    update data_dictionary
+    set typeCode = #{typeCode,jdbcType=VARCHAR},
+      typeName = #{typeName,jdbcType=VARCHAR},
+      valueId = #{valueId,jdbcType=BIGINT},
+      valueName = #{valueName,jdbcType=VARCHAR},
+      createdBy = #{createdBy,jdbcType=BIGINT},
+      creationDate = #{creationDate,jdbcType=TIMESTAMP},
+      modifyBy = #{modifyBy,jdbcType=BIGINT},
+      modifyDate = #{modifyDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
