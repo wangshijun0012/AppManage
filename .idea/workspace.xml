@@ -6,57 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcc90e55-b016-4b64-900b-7bf3f9fa4e90" name="Default Changelist" comment="降低了mysql-connector-java的版本">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/onesdream/service/BackendUserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/onesdream/service/BackendUserServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/onesdream/service/DevUserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/onesdream/service/DevUserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/onesdream/controller/BackendUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/onesdream/controller/BackendUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/onesdream/controller/DevUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/onesdream/controller/DevUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/onesdream/pojo/AdPromotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/onesdream/pojo/AdPromotion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/onesdream/pojo/AppCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/onesdream/pojo/AppCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/onesdream/pojo/AppInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/onesdream/pojo/AppInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/onesdream/pojo/AppVersion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/onesdream/pojo/AppVersion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/onesdream/pojo/BackendUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/onesdream/pojo/BackendUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/onesdream/pojo/DataDictionary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/onesdream/pojo/DataDictionary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/onesdream/pojo/DevUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/onesdream/pojo/DevUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/database.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/database.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/backend/appcheck.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/backend/appcheck.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/backendlogin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/backendlogin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/developer/common/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/developer/common/footer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/devlogin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/devlogin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/applicationContext.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/onesdream/controller/BackendUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/onesdream/controller/BackendUserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/onesdream/controller/DevUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/onesdream/controller/DevUserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/onesdream/dao/AdPromotionMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/onesdream/dao/AdPromotionMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/onesdream/dao/AppCategoryMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/onesdream/dao/AppCategoryMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/onesdream/dao/AppInfoMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/onesdream/dao/AppInfoMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/onesdream/dao/AppVersionMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/onesdream/dao/AppVersionMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/onesdream/dao/BackendUserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/onesdream/dao/BackendUserMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/onesdream/dao/DataDictionaryMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/onesdream/dao/DataDictionaryMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/onesdream/dao/DevUserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/onesdream/dao/DevUserMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/onesdream/pojo/AdPromotion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/onesdream/pojo/AdPromotion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/database.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/database.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/spring/WEB-INF/classes/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/spring/WEB-INF/classes/applicationContext.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/spring/WEB-INF/classes/cn/onesdream/controller/BackendUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/spring/WEB-INF/classes/cn/onesdream/controller/BackendUserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/spring/WEB-INF/classes/cn/onesdream/controller/DevUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/spring/WEB-INF/classes/cn/onesdream/controller/DevUserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/spring/WEB-INF/classes/cn/onesdream/dao/AdPromotionMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/spring/WEB-INF/classes/cn/onesdream/dao/AdPromotionMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/spring/WEB-INF/classes/cn/onesdream/dao/AppCategoryMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/spring/WEB-INF/classes/cn/onesdream/dao/AppCategoryMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/spring/WEB-INF/classes/cn/onesdream/dao/AppInfoMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/spring/WEB-INF/classes/cn/onesdream/dao/AppInfoMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/spring/WEB-INF/classes/cn/onesdream/dao/AppVersionMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/spring/WEB-INF/classes/cn/onesdream/dao/AppVersionMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/spring/WEB-INF/classes/cn/onesdream/dao/BackendUserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/spring/WEB-INF/classes/cn/onesdream/dao/BackendUserMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/spring/WEB-INF/classes/cn/onesdream/dao/DataDictionaryMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/spring/WEB-INF/classes/cn/onesdream/dao/DataDictionaryMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/spring/WEB-INF/classes/cn/onesdream/dao/DevUserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/spring/WEB-INF/classes/cn/onesdream/dao/DevUserMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/spring/WEB-INF/classes/database.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/spring/WEB-INF/classes/database.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/spring/WEB-INF/jsp/backend/appcheck.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/spring/WEB-INF/jsp/backend/appcheck.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/spring/WEB-INF/jsp/backendlogin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/spring/WEB-INF/jsp/backendlogin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/spring/WEB-INF/jsp/developer/common/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/spring/WEB-INF/jsp/developer/common/footer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/spring/WEB-INF/jsp/devlogin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/spring/WEB-INF/jsp/devlogin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/spring/WEB-INF/lib/mysql-connector-java-8.0.17.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/spring/WEB-INF/lib/protobuf-java-3.6.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/spring/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/spring/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/spring/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/spring/index.jsp" afterDir="false" />
+    <list default="true" id="dcc90e55-b016-4b64-900b-7bf3f9fa4e90" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,23 +94,23 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/java课堂笔记/2020-01-05springbgoot/demo03" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ideaProject\AppManage" />
+      <recent name="D:\ideaProject\AppManage\src\main\webapp\WEB-INF" />
+      <recent name="D:\ideaProject\AppManage\src\main\resources" />
       <recent name="D:\ideaProject\AppManage\src\main\webapp" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="cn.onesdream.interceptor" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\ideaProject\AppManage" />
-      <recent name="D:\ideaProject\AppManage\src\main\webapp\WEB-INF" />
-      <recent name="D:\ideaProject\AppManage\src\main\resources" />
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\ideaProject\AppManage\src\main\webapp" />
     </key>
   </component>
@@ -274,16 +225,12 @@
     <option name="viewStates">
       <list>
         <serviceView>
+          <option name="contentProportion" value="0.22882514" />
           <treeState>
             <expand>
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="Finished" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
             </expand>
             <select />
@@ -307,7 +254,11 @@
       <workItem from="1577855646216" duration="1013000" />
       <workItem from="1577928043465" duration="1603000" />
       <workItem from="1577931863109" duration="9732000" />
-      <workItem from="1577944803562" duration="5982000" />
+      <workItem from="1577944803562" duration="15192000" />
+      <workItem from="1578014210742" duration="1833000" />
+      <workItem from="1578040677967" duration="447000" />
+      <workItem from="1578195232346" duration="16093000" />
+      <workItem from="1578276220796" duration="913000" />
     </task>
     <task id="LOCAL-00001" summary="设置忽略上传的文件">
       <created>1577856558628</created>
@@ -351,7 +302,42 @@
       <option name="project" value="LOCAL" />
       <updated>1577948373299</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="给每个实体类指定了表名，解决了映射问题">
+      <created>1577950975080</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1577950975080</updated>
+    </task>
+    <task id="LOCAL-00008" summary="1.删除表名前缀的设置，不然会报错&#10;2.删除mysql驱动名中的cj，以适配低版本mysql数据库">
+      <created>1577954958238</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1577954958238</updated>
+    </task>
+    <task id="LOCAL-00009" summary="在两个登录页面中开启EL表达式的支持">
+      <created>1577955236084</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1577955236084</updated>
+    </task>
+    <task id="LOCAL-00010" summary="1.修复了一个前端页面中的只有半截标签的问题&#10;2.修复了一个前端页面中的版权符号显示不正常的问题">
+      <created>1577955523303</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1577955523303</updated>
+    </task>
+    <task id="LOCAL-00011" summary="增加了登录功能">
+      <created>1578279373474</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1578279373474</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -434,17 +420,22 @@
     <MESSAGE value="开启了el表达式" />
     <MESSAGE value="降低了mysql-connector-java的版本" />
     <MESSAGE value="修改了dao层，添加了泛型，修复了mapper映射问题" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改了dao层，添加了泛型，修复了mapper映射问题" />
+    <MESSAGE value="给每个实体类指定了表名，解决了映射问题" />
+    <MESSAGE value="1.删除表名前缀的设置，不然会报错&#10;2.删除mysql驱动名中的cj，以适配低版本mysql数据库" />
+    <MESSAGE value="在两个登录页面中开启EL表达式的支持" />
+    <MESSAGE value="1.修复了一个前端页面中的只有半截标签的问题&#10;2.修复了一个前端页面中的版权符号显示不正常的问题" />
+    <MESSAGE value="增加了登录功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加了登录功能" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="93" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1577944930475">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="361" y="93" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1577944930475" />
-    <state x="574" y="140" key="#com.intellij.ide.util.MemberChooser" timestamp="1577945965237">
+    <state x="574" y="140" key="#com.intellij.ide.util.MemberChooser" timestamp="1578213226333">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="574" y="140" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1577945965237" />
+    <state x="574" y="140" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1578213226333" />
     <state x="499" y="212" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1577854851281">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -453,18 +444,18 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="499" y="181" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864@0.0.1536.864" timestamp="1577854320992" />
-    <state x="103" y="46" key="CommitChangelistDialog2" timestamp="1577948370158">
+    <state x="103" y="37" key="CommitChangelistDialog2" timestamp="1578279367287">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="103" y="46" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1577948370158" />
-    <state x="93" y="93" width="1350" height="678" key="DiffContextDialog" timestamp="1577944857148">
+    <state x="103" y="37" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1578279367287" />
+    <state x="93" y="93" width="1350" height="678" key="DiffContextDialog" timestamp="1577955382950">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="93" y="93" width="1350" height="678" key="DiffContextDialog/0.0.1536.864@0.0.1536.864" timestamp="1577944857148" />
-    <state x="933" y="193" key="FileChooserDialogImpl" timestamp="1577856462549">
+    <state x="93" y="93" width="1350" height="678" key="DiffContextDialog/0.0.1536.864@0.0.1536.864" timestamp="1577955382950" />
+    <state x="275" y="145" key="FileChooserDialogImpl" timestamp="1578204740530">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="933" y="193" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1577856462549" />
+    <state x="275" y="145" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1578204740530" />
     <state x="632" y="327" width="273" height="209" key="Github.ShareDialog" timestamp="1577855142837">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -473,66 +464,66 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="506" y="139" key="Github.UntrackedFilesDialog/0.0.1536.864@0.0.1536.864" timestamp="1577855229239" />
-    <state width="918" height="264" key="GridCell.Tab.0.bottom" timestamp="1577950847452">
+    <state width="1128" height="192" key="GridCell.Tab.0.bottom" timestamp="1578203768823">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="918" height="264" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1577950847452" />
-    <state width="918" height="264" key="GridCell.Tab.0.center" timestamp="1577950847452">
+    <state width="1128" height="192" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1578203768823" />
+    <state width="1128" height="192" key="GridCell.Tab.0.center" timestamp="1578203768823">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="918" height="264" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1577950847452" />
-    <state width="918" height="264" key="GridCell.Tab.0.left" timestamp="1577950847452">
+    <state width="1128" height="192" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1578203768823" />
+    <state width="1128" height="192" key="GridCell.Tab.0.left" timestamp="1578203768822">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="918" height="264" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1577950847452" />
-    <state width="918" height="264" key="GridCell.Tab.0.right" timestamp="1577950847452">
+    <state width="1128" height="192" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1578203768822" />
+    <state width="1128" height="192" key="GridCell.Tab.0.right" timestamp="1578203768823">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="918" height="264" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1577950847452" />
-    <state width="918" height="264" key="GridCell.Tab.1.bottom" timestamp="1577950847155">
+    <state width="1128" height="192" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1578203768823" />
+    <state width="1128" height="192" key="GridCell.Tab.1.bottom" timestamp="1578203768823">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="918" height="264" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1577950847155" />
-    <state width="918" height="264" key="GridCell.Tab.1.center" timestamp="1577950847155">
+    <state width="1128" height="192" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1578203768823" />
+    <state width="1128" height="192" key="GridCell.Tab.1.center" timestamp="1578203768823">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="918" height="264" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1577950847155" />
-    <state width="918" height="264" key="GridCell.Tab.1.left" timestamp="1577950847155">
+    <state width="1128" height="192" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1578203768823" />
+    <state width="1128" height="192" key="GridCell.Tab.1.left" timestamp="1578203768823">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="918" height="264" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1577950847155" />
-    <state width="918" height="264" key="GridCell.Tab.1.right" timestamp="1577950847155">
+    <state width="1128" height="192" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1578203768823" />
+    <state width="1128" height="192" key="GridCell.Tab.1.right" timestamp="1578203768823">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="918" height="264" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1577950847155" />
-    <state width="918" height="264" key="GridCell.Tab.2.bottom" timestamp="1577950847155">
+    <state width="1128" height="192" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1578203768823" />
+    <state width="1128" height="192" key="GridCell.Tab.2.bottom" timestamp="1578203768824">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="918" height="264" key="GridCell.Tab.2.bottom/0.0.1536.864@0.0.1536.864" timestamp="1577950847155" />
-    <state width="918" height="264" key="GridCell.Tab.2.center" timestamp="1577950847155">
+    <state width="1128" height="192" key="GridCell.Tab.2.bottom/0.0.1536.864@0.0.1536.864" timestamp="1578203768824" />
+    <state width="1128" height="192" key="GridCell.Tab.2.center" timestamp="1578203768824">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="918" height="264" key="GridCell.Tab.2.center/0.0.1536.864@0.0.1536.864" timestamp="1577950847155" />
-    <state width="918" height="264" key="GridCell.Tab.2.left" timestamp="1577950847155">
+    <state width="1128" height="192" key="GridCell.Tab.2.center/0.0.1536.864@0.0.1536.864" timestamp="1578203768824" />
+    <state width="1128" height="192" key="GridCell.Tab.2.left" timestamp="1578203768824">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="918" height="264" key="GridCell.Tab.2.left/0.0.1536.864@0.0.1536.864" timestamp="1577950847155" />
-    <state width="918" height="264" key="GridCell.Tab.2.right" timestamp="1577950847155">
+    <state width="1128" height="192" key="GridCell.Tab.2.left/0.0.1536.864@0.0.1536.864" timestamp="1578203768824" />
+    <state width="1128" height="192" key="GridCell.Tab.2.right" timestamp="1578203768824">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="918" height="264" key="GridCell.Tab.2.right/0.0.1536.864@0.0.1536.864" timestamp="1577950847155" />
+    <state width="1128" height="192" key="GridCell.Tab.2.right/0.0.1536.864@0.0.1536.864" timestamp="1578203768824" />
     <state width="212" height="477" key="HiddenNamespacesPopup" timestamp="1577853772938">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="212" height="477" key="HiddenNamespacesPopup/0.0.1536.864@0.0.1536.864" timestamp="1577853772938" />
-    <state x="272" y="77" key="SettingsEditor" timestamp="1577856382277">
+    <state x="272" y="77" key="SettingsEditor" timestamp="1578279633941">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="272" y="77" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1577856382277" />
-    <state x="469" y="168" key="Vcs.Push.Dialog.v2" timestamp="1577948382970">
+    <state x="272" y="77" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1578279633941" />
+    <state x="469" y="168" key="Vcs.Push.Dialog.v2" timestamp="1578279583905">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="469" y="168" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1577948382970" />
+    <state x="469" y="168" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1578279583905" />
     <state x="564" y="350" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1577937719952">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -541,5 +532,13 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="450" y="234" key="git4idea.merge.GitPullDialog/0.0.1536.864@0.0.1536.864" timestamp="1577939255116" />
+    <state x="-217" y="77" key="new project wizard" timestamp="1578017854612">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="-217" y="77" key="new project wizard/0.0.1536.864@0.0.1536.864" timestamp="1578017854612" />
+    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1578215433957">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1578215433957" />
   </component>
 </project>
