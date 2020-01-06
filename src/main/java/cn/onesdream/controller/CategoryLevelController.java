@@ -18,7 +18,7 @@ public class CategoryLevelController {
         Long id = Long.parseLong(pid);
         if(id != null && id == 0 ){
             if(id == 1 || id == 2){
-                return appCategoryService.
+                return appCategoryService.a
             }
         }
     }
