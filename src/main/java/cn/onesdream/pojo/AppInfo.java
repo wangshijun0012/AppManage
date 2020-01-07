@@ -4,8 +4,13 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import cn.onesdream.dao.DataDictionaryMapper;
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import lombok.Data;
+
+import javax.annotation.Resource;
 
 /**
  * app_info
@@ -14,6 +19,8 @@ import lombok.Data;
 @TableName(value = "app_info")
 @Data
 public class AppInfo implements Serializable {
+    @Resource
+    private DataDictionaryMapper dataDictionaryMapper;
     /**
      * 主键id
      */
@@ -63,6 +70,11 @@ public class AppInfo implements Serializable {
      * 状态（来源于：data_dictionary，1 待审核 2 审核通过 3 审核不通过 4 已上架 5 已下架）
      */
     private Long status;
+    /**
+     * 状态名称
+     */
+    @TableField(exist = false)
+    private String statusName;
 
     /**
      * 上架时间
@@ -78,7 +90,11 @@ public class AppInfo implements Serializable {
      * 所属平台（来源于：data_dictionary，1 手机 2 平板 3 通用）
      */
     private Long flatformId;
-
+    /**
+     * 所属平台名称
+     */
+    @TableField(exist = false)
+    private String flatformName;
     /**
      * 所属三级分类（来源于：data_dictionary）
      */
@@ -135,4 +151,10 @@ public class AppInfo implements Serializable {
     private Long versionId;
 
     private static final long serialVersionUID = 1L;
+    public void setStatus(Long status){
+
+        this.status = status;
+
+
+    }
 }

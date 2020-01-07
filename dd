@@ -1,0 +1,104 @@
+[33mcommit 83b1dce9af04cbffb5028281c3a9a7b4ba52bc70[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: WangShijun <wangshijun0012@163.com>
+Date:   Mon Jan 6 11:01:21 2020 +0800
+
+    忽略上传war包
+
+[33mcommit f9d2f96bf657eb29f26ab33b8fa1efb4bc65327e[m
+Author: WangShijun <wangshijun0012@163.com>
+Date:   Mon Jan 6 10:56:10 2020 +0800
+
+    增加了登录功能
+
+[33mcommit 25f06e4ec1da91482e889a35862ca167e0c281d0[m
+Author: WangShijun <wangshijun0012@163.com>
+Date:   Thu Jan 2 16:58:43 2020 +0800
+
+    1.修复了一个前端页面中的只有半截标签的问题
+    2.修复了一个前端页面中的版权符号显示不正常的问题
+
+[33mcommit 235b2d191d51ee97294fb012daa39608be3cd7b9[m
+Author: WangShijun <wangshijun0012@163.com>
+Date:   Thu Jan 2 16:53:55 2020 +0800
+
+    在两个登录页面中开启EL表达式的支持
+
+[33mcommit 85d3b5313f6f0f84ee67577f655e98b2b3a7a867[m
+Author: WangShijun <wangshijun0012@163.com>
+Date:   Thu Jan 2 16:49:18 2020 +0800
+
+    1.删除表名前缀的设置，不然会报错
+    2.删除mysql驱动名中的cj，以适配低版本mysql数据库
+
+[33mcommit bfc3ec35d5112865b66b6dc253aeaeceda258bc3[m
+Author: WangShijun <wangshijun0012@163.com>
+Date:   Thu Jan 2 16:38:49 2020 +0800
+
+    删除了target
+
+[33mcommit 759300ff04699d9766dd94e5b06b6bf150cb4fd4[m
+Author: WangShijun <wangshijun0012@163.com>
+Date:   Thu Jan 2 15:42:54 2020 +0800
+
+    给每个实体类指定了表名，解决了映射问题
+
+[33mcommit 3695942a452b3d1cbbfb6ab54f19aa27332227dc[m
+Author: WangShijun <wangshijun0012@163.com>
+Date:   Thu Jan 2 14:59:33 2020 +0800
+
+    修改了dao层，添加了泛型，修复了mapper映射问题
+
+[33mcommit 4ce447da536ec82c95be5794abc7319733235a78[m
+Author: WangShijun <wangshijun0012@163.com>
+Date:   Thu Jan 2 11:54:29 2020 +0800
+
+    降低了mysql-connector-java的版本
+
+[33mcommit 090567864b31c625436806782c9e7da21ab4f926[m
+Author: WangShijun <wangshijun0012@163.com>
+Date:   Thu Jan 2 11:28:52 2020 +0800
+
+    开启了el表达式
+
+[33mcommit 091b796ded887dd2eb9645d10c5a7c70cfc750d0[m
+Author: WangShijun <wangshijun0012@163.com>
+Date:   Thu Jan 2 11:15:20 2020 +0800
+
+    开启了el表达式
+
+[33mcommit 1ba15b691795251cf56f87add6838d4e1b0f2bc9[m
+Author: WangShijun <wangshijun0012@163.com>
+Date:   Thu Jan 2 11:13:15 2020 +0800
+
+    开启了el表达式
+
+[33mcommit fb12aee164fcbf6c1a8a99c83799b9554ba0d528[m
+Merge: cc46abf c79e304
+Author: WangShijun <wangshijun0012@163.com>
+Date:   Wed Jan 1 13:29:57 2020 +0800
+
+    Merge remote-tracking branch 'origin/master'
+
+[33mcommit cc46abf8ed29aee2a81214f4e784537fd77dabab[m
+Author: WangShijun <wangshijun0012@163.com>
+Date:   Wed Jan 1 13:29:17 2020 +0800
+
+    设置忽略上传的文件
+
+[33mcommit c79e304083d744d938a6007d02772c86e3fe87eb[m
+Author: wangshijun0012 <45195877+wangshijun0012@users.noreply.github.com>
+Date:   Wed Jan 1 13:22:06 2020 +0800
+
+    Delete controller
+
+[33mcommit f76b40166b67403a90c90be322ef07b50d30d2e9[m
+Author: wangshijun0012 <45195877+wangshijun0012@users.noreply.github.com>
+Date:   Wed Jan 1 13:21:38 2020 +0800
+
+    Create controller
+
+[33mcommit 06b917160a921d67d5ca3c7bb98a02644da588e6[m
+Author: WangShijun <wangshijun0012@163.com>
+Date:   Wed Jan 1 13:07:12 2020 +0800
+
+    Initial commit
