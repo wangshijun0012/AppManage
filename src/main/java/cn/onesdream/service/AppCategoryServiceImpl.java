@@ -45,7 +45,7 @@ public class AppCategoryServiceImpl implements AppCategoryService {
         return selectList;
     }
 
-    @Override
+
     public List<AppCategory> getLevel3() {
         EntityWrapper wrapper = new EntityWrapper();
         wrapper.isNotNull("parentId");
