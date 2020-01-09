@@ -18,17 +18,16 @@ public class BackendUserServiceImpl implements BackendUserService {
         if(username == null || "".equals(username) || password == null || "".equals(password)){
             return null;
         }
-
         BackendUser backendUser = new BackendUser();
         backendUser.setUserCode(username);
         backendUser.setUserPassword(password);
-        BackendUser backendUser1 = backendUserMapper.selectOne(backendUser);
+        backendUser = backendUserMapper.selectOne(backendUser);
 
-        DataDictionary dictionary = new DataDictionary();
-        dictionary.setTypeCode("USER_TYPE");
-        dictionary.setValueId(backendUser1.getUserType());
-        backendUser1.setUserTypeName(dataDictionaryMapper.selectOne(dictionary).getValueName());
+        DataDictionary dataDictionary = new DataDictionary();
+        dataDictionary.setTypeCode("USER_TYPE");
+        dataDictionary.setValueId(backendUser.getUserType());
+        backendUser.setUserTypeName(dataDictionaryMapper.selectOne(dataDictionary).getValueName());
 
-        return backendUser1;
+        return backendUser;
     }
 }

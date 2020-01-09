@@ -4,10 +4,9 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import cn.onesdream.dao.DataDictionaryMapper;
+
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import lombok.Data;
 
 import javax.annotation.Resource;
@@ -19,8 +18,7 @@ import javax.annotation.Resource;
 @TableName(value = "app_info")
 @Data
 public class AppInfo implements Serializable {
-    @Resource
-    private DataDictionaryMapper dataDictionaryMapper;
+
     /**
      * 主键id
      */
@@ -99,7 +97,8 @@ public class AppInfo implements Serializable {
      * 所属三级分类（来源于：data_dictionary）
      */
     private Long categoryLevel3;
-
+    @TableField(exist = false)
+    private String categoryLevel3Name;
     /**
      * 下载量（单位：次）
      */
@@ -129,11 +128,15 @@ public class AppInfo implements Serializable {
      * 所属一级分类（来源于：data_dictionary）
      */
     private Long categoryLevel1;
+    @TableField(exist = false)
+    private String categoryLevel1Name;
 
     /**
      * 所属二级分类（来源于：data_dictionary）
      */
     private Long categoryLevel2;
+    @TableField(exist = false)
+    private String categoryLevel2Name;
 
     /**
      * LOGO图片url路径
@@ -149,12 +152,9 @@ public class AppInfo implements Serializable {
      * 最新的版本id
      */
     private Long versionId;
+    @TableField(exist = false)
+    private String versionNo;
 
     private static final long serialVersionUID = 1L;
-    public void setStatus(Long status){
 
-        this.status = status;
-
-
-    }
 }

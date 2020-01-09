@@ -37,16 +37,24 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
         <property name="typeAliasesPackage" value="cn.onesdream.pojo"/>
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
         <!--以下是配置mybatisPlus的物理分页插件，如果不进行配置，将会是逻辑分页-->
-        <property name="plugins" ref="pageInterceptor"/>
+        <property name="plugins">
+            <array>
+                <!-- 分页插件配置 -->
+                <bean id="paginationInterceptor" class="com.baomidou.mybatisplus.plugins.PaginationInterceptor">
+                    <property name="dialectType" value="mysql" />
+                </bean>
+            </array>
+        </property>
         <property name="globalConfig" ref="globalConfiguration"/>
     </bean>
     <bean id="globalConfiguration" class="com.baomidou.mybatisplus.entity.GlobalConfiguration">
-        <property name="idType" value="0"/>
-        <property name="tablePrefix" value=""/>
-        <!--规定自动生成的sql语句中的字段不使用下划线进行命名-->
-        <property name="dbColumnUnderline" value="false"/>
-    </bean>
-    <bean id="pageInterceptor" class="com.baomidou.mybatisplus.plugins.PaginationInterceptor">
+
+                <property name="idType" value="0"/>
+                <property name="tablePrefix" value=""/>
+                <!--规定自动生成的sql语句中的字段不使用下划线进行命名-->
+                <property name="capitalMode" value="false"/>
+                <property name="dbColumnUnderline" value="false"/>
+
 
     </bean>
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">

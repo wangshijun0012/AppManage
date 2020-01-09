@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -14,11 +16,13 @@ public class AppCategoryServiceImpl implements AppCategoryService {
     @Resource
     private AppCategoryMapper appCategoryMapper;
     @Override
-    public List<AppCategory> getLevel1() {
-        EntityWrapper<AppCategory> wrapper = new EntityWrapper<>();
-        wrapper.isNull("parentId");
-        List<AppCategory> categories = appCategoryMapper.selectList(wrapper);
-        return categories;
+    public List<AppCategory> getLevel1(HttpServletRequest request) {
+
+            EntityWrapper<AppCategory> wrapper = new EntityWrapper<>();
+            wrapper.isNull("parentId");
+            List<AppCategory> categories = appCategoryMapper.selectList(wrapper);
+            return categories;
+
     }
 
     @Override
@@ -29,4 +33,20 @@ public class AppCategoryServiceImpl implements AppCategoryService {
         return categories;
     }
 
+    @Override
+    public List<AppCategory> getLevel2(HttpServletRequest request) {
+        EntityWrapper wrapper = new EntityWrapper();
+        wrapper.in("parentId", Arrays.asList(1,2));
+        List selectList = appCategoryMapper.selectList(wrapper);
+        return selectList;
+    }
+
+    @Override
+    public List<AppCategory> getLevel3() {
+        EntityWrapper wrapper = new EntityWrapper();
+        wrapper.isNotNull("parentId");
+        wrapper.notIn("parentId", Arrays.asList(1,2));
+        List selectList = appCategoryMapper.selectList(wrapper);
+        return selectList;
+    }
 }

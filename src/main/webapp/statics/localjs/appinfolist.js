@@ -10,9 +10,9 @@ $("#queryCategoryLevel1").change(function(){
 				$("#queryCategoryLevel2").html("");
 				var options = "<option value=\"\">--请选择--</option>";
 				for(var i = 0; i < data.length; i++){
-					
-					
-					
+
+
+
 					options += "<option value=\""+data[i].id+"\">"+data[i].categoryName+"</option>";
 				}
 				$("#queryCategoryLevel2").html(options);
@@ -59,7 +59,17 @@ $("#queryCategoryLevel2").change(function(){
 		$("#queryCategoryLevel3").html(options);
 	}
 });
-
+/*手动触发上一级的change事件*/
+$("#queryCategoryLevel3").mouseover(function(){
+	if($("#queryCategoryLevel1").val() != "" || $("#queryCategoryLevel2").val() != ""){
+	$("#queryCategoryLevel2").trigger("change")
+	};
+});
+$("#queryCategoryLevel2").mouseover(function(){
+	if($("#queryCategoryLevel1").val() != "" || $("#queryCategoryLevel3").val() != ""){
+		$("#queryCategoryLevel1").trigger("change")
+	};
+});
 
 $(".addVersion").on("click",function(){
 	var obj = $(this);
