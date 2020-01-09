@@ -19,15 +19,7 @@ public class AppCategoryServiceImpl implements AppCategoryService {
 
     @Resource
     private AppCategoryMapper appCategoryMapper;
-    @Override
-    public List<AppCategory> getLevel1(HttpServletRequest request) {
 
-            EntityWrapper<AppCategory> wrapper = new EntityWrapper<>();
-            wrapper.isNull("parentId");
-            List<AppCategory> categories = appCategoryMapper.selectList(wrapper);
-            return categories;
-
-    }
 
     @Override
     public List<AppCategory> getLevelByParent(String pid) {
@@ -36,9 +28,17 @@ public class AppCategoryServiceImpl implements AppCategoryService {
         List<AppCategory> categories = appCategoryMapper.selectList(wrapper);
         return categories;
     }
-
     @Override
-    public List<AppCategory> getLevel2(HttpServletRequest request) {
+    public List<AppCategory> getLevel1() {
+
+        EntityWrapper<AppCategory> wrapper = new EntityWrapper<>();
+        wrapper.isNull("parentId");
+        List<AppCategory> categories = appCategoryMapper.selectList(wrapper);
+        return categories;
+
+    }
+    @Override
+    public List<AppCategory> getLevel2() {
         EntityWrapper wrapper = new EntityWrapper();
         wrapper.in("parentId", Arrays.asList(1,2));
         List selectList = appCategoryMapper.selectList(wrapper);

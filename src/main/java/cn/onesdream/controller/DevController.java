@@ -8,6 +8,7 @@ import cn.onesdream.service.AppCategoryService;
 import cn.onesdream.service.DataDictionaryService;
 import cn.onesdream.service.DevUserService;
 
+import cn.onesdream.tools.Constants;
 import com.baomidou.mybatisplus.plugins.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,6 +49,14 @@ public class DevController {
         }
         return "/devlogin";
     }
+    //退出登录
+    @RequestMapping("/loginOut")
+    public String loginout(HttpSession Session) {
+//    清除session 返回主界面选择登录的模块
+        Session.removeAttribute(Constants.USER_SESSION);
+        return "redirect:../index.jsp";
+    }
+
     @RequestMapping("/flatform/app/list")
     public String list(HttpSession session,HttpServletRequest request){
 
@@ -57,11 +66,11 @@ public class DevController {
         List list2 = (List) session.getAttribute("categoryLevel2List");
         List list3 = (List) session.getAttribute("categoryLevel3List");
         if(list1 == null || "".equals(list1)){
-            session.setAttribute("categoryLevel1List", appCategoryService.getLevel1(request));
+            session.setAttribute("categoryLevel1List", appCategoryService.getLevel1());
             System.out.println(session.getAttribute("categoryLevel1List"));
         }
         if(list2 == null || "".equals(list2)){
-            session.setAttribute("categoryLevel2List", appCategoryService.getLevel2(request));
+            session.setAttribute("categoryLevel2List", appCategoryService.getLevel2());
         }
         if(list3 == null || "".equals(list3)){
             session.setAttribute("categoryLevel3List", appCategoryService.getLevel3());
@@ -85,6 +94,7 @@ public class DevController {
         session.setAttribute("flatFormList", allFlatForm);
         return "/developer/appinfolist";
     }
+
     @RequestMapping("/flatform/app/categorylevellist.json")
     @ResponseBody
     public Object levellist(HttpSession session,HttpServletRequest request){

@@ -50,7 +50,7 @@ public class BackendController {
     public String loginout(HttpSession Session) {
 //    清除session 返回主界面选择登录的模块
         Session.removeAttribute(Constants.USER_SESSION);
-        return "redirect:../index.jsp";
+        return "backendlogin";
     }
 
 }
