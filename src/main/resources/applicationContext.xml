@@ -47,23 +47,27 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
         </property>
         <property name="globalConfig" ref="globalConfiguration"/>
     </bean>
-    <bean id="globalConfiguration" class="com.baomidou.mybatisplus.entity.GlobalConfiguration">
-
-                <property name="idType" value="0"/>
-                <property name="tablePrefix" value=""/>
-                <!--规定自动生成的sql语句中的字段不使用下划线进行命名-->
-                <property name="capitalMode" value="false"/>
-                <property name="dbColumnUnderline" value="false"/>
-
-
-    </bean>
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
         <property name="basePackage" value="cn.onesdream.dao"/>
+    </bean>
+    <bean id="globalConfiguration" class="com.baomidou.mybatisplus.entity.GlobalConfiguration">
+
+        <property name="idType" value="0"/>
+        <property name="tablePrefix" value=""/>
+        <property name="capitalMode" value="false"/>
+        <!--规定自动生成的sql语句中的字段不使用下划线进行命名-->
+        <property name="dbColumnUnderline" value="false"/>
+
+
     </bean>
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
     <tx:annotation-driven transaction-manager="transactionManager"/>
+<!--    用于接收multipart/form-data传输的普通参数，而且id必须为multipartResolver-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8"/>
+    </bean>
 
 </beans>

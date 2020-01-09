@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class AppCategoryServiceImpl implements AppCategoryService {
     @Resource
     private AppCategoryMapper appCategoryMapper;
     @Override
-    public List<AppCategory> getLevel1(HttpServletRequest request) {
+    public List<AppCategory> getLevel1() {
 
             EntityWrapper<AppCategory> wrapper = new EntityWrapper<>();
             wrapper.isNull("parentId");
@@ -34,7 +33,7 @@ public class AppCategoryServiceImpl implements AppCategoryService {
     }
 
     @Override
-    public List<AppCategory> getLevel2(HttpServletRequest request) {
+    public List<AppCategory> getLevel2() {
         EntityWrapper wrapper = new EntityWrapper();
         wrapper.in("parentId", Arrays.asList(1,2));
         List selectList = appCategoryMapper.selectList(wrapper);
@@ -49,4 +48,5 @@ public class AppCategoryServiceImpl implements AppCategoryService {
         List selectList = appCategoryMapper.selectList(wrapper);
         return selectList;
     }
+
 }

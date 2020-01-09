@@ -7,9 +7,9 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public interface AppCategoryService {
-    List<AppCategory> getLevel1(HttpServletRequest request);
+    List<AppCategory> getLevel1();
     List<AppCategory> getLevelByParent(String pid);
-    List<AppCategory> getLevel2(HttpServletRequest request);
+    List<AppCategory> getLevel2();
     List<AppCategory> getLevel3();
 
 
