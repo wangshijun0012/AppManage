@@ -12,10 +12,12 @@ public class Data {
         this.APKName = "empty";
         return this;
     }
+
     public Data isExist(){
         this.APKName = "exist";
         return this;
     }
+
     public Data isNoExist(){
         this.APKName = "noexist";
         return this;

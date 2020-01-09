@@ -1,15 +1,10 @@
 package cn.onesdream.controller;
 
-import cn.onesdream.pojo.AppCategory;
-import cn.onesdream.pojo.AppInfo;
-import cn.onesdream.pojo.DataDictionary;
-import cn.onesdream.pojo.DevUser;
-import cn.onesdream.service.AppCategoryService;
-import cn.onesdream.service.AppInfoService;
-import cn.onesdream.service.DataDictionaryService;
-import cn.onesdream.service.DevUserService;
+import cn.onesdream.pojo.*;
+import cn.onesdream.service.*;
 
 import cn.onesdream.util.Data;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -32,6 +28,8 @@ public class DevController {
     private AppCategoryService appCategoryService;
     @Resource
     private AppInfoService appInfoService;
+    @Resource
+    private AppVersionService appVersionService;
     @RequestMapping("/login")
     public String login(){
         return "/devlogin";
@@ -127,11 +125,28 @@ public class DevController {
 
     @RequestMapping("/flatform/app/appinfoaddsave")
     public String appaddsave(HttpSession session, HttpServletRequest request,AppInfo appInfo){
+        DevUser devUser = (DevUser) session.getAttribute("devUserSession");
         if(appInfo.getAPKName() != null){
+            appInfo.setCreationDate(new Date(System.currentTimeMillis()));
+            appInfo.setCreatedBy(devUser.getId());
             appInfoService.addApp(appInfo);
             return "redirect:/dev/flatform/app/list";
         }
         return "error";
+    }
+
+    @RequestMapping("/flatform/app/appversionadd")
+    public String appversionadd(HttpServletRequest request,HttpSession session){
+        String id = request.getParameter("id");
+        List<AppVersion> appVersions = appVersionService.getAppVersion(id);
+        request.setAttribute("appVersionList", appVersions);
+        return "/developer/appversionadd";
+    }
+
+    @RequestMapping("/flatform/app/addversionsave")
+    public String addversionsave(HttpServletRequest request,HttpSession session,AppVersion appVersion){
+        appVersionService.insertOne(appVersion);
+        return "redirect:/dev/flatform/app/list";
     }
 
 

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
 import lombok.Data;
 
@@ -23,6 +24,8 @@ public class AppVersion implements Serializable {
      * appId（来源于：app_info表的主键id）
      */
     private Long appId;
+    @TableField(exist = false)
+    private String appName;
 
     /**
      * 版本号
@@ -38,7 +41,8 @@ public class AppVersion implements Serializable {
      * 发布状态（来源于：data_dictionary，1 不发布 2 已发布 3 预发布）
      */
     private Long publishStatus;
-
+    @TableField(exist = false)
+    private String publishStatusName;
     /**
      * 下载链接
      */
