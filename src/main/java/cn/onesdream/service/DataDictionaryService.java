@@ -7,4 +7,5 @@ import java.util.List;
 public interface DataDictionaryService {
     List<DataDictionary> getAllStatus();
     List<DataDictionary> getAllFlatForm();
+    List<DataDictionary> getDataDictionaryList(String typeCode);
 }

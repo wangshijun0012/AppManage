@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.annotations.TableName;
 import lombok.Data;
 
 /**
+ * App推广信息
  * ad_promotion
  * @author 
  */

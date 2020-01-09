@@ -23,10 +23,13 @@ public class DevController {
     private DataDictionaryService dataDictionaryService;
     @Resource
     private AppCategoryService appCategoryService;
+
+//   开发者 登录页面
     @RequestMapping("/login")
     public String login(){
         return "/devlogin";
     }
+//    开发者登录处理
     @RequestMapping("/dologin")
     public String dologin(HttpSession session, HttpServletRequest request){
         String devCode = request.getParameter("devCode");

@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.annotations.TableName;
 import lombok.Data;
 
 /**
+ * 管理员信息
  * backend_user
  * @author 
  */

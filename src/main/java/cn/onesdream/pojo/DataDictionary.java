@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.annotations.TableName;
 import lombok.Data;
 
 /**
+ * 数据库字典
  * data_dictionary
  * @author 
  */

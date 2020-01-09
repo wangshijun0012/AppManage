@@ -16,10 +16,12 @@ public class CategoryLevelController {
     @ResponseBody
     public Object categorylevellist(String pid){
         Long id = Long.parseLong(pid);
-        if(id != null && id == 0 ){
-            if(id == 1 || id == 2){
-                return appCategoryService.a
-            }
-        }
+//        if(id != null && id == 0 ){
+//            if(id == 1 || id == 2){
+//                return appCategoryService.a
+//            }
+        return null;
+
+
     }
 }
