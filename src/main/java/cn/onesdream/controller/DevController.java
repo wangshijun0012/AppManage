@@ -45,6 +45,13 @@ public class DevController {
         }
         return "/devlogin";
     }
+
+    @RequestMapping("logout")
+    public String logout(HttpSession  session){
+        session.invalidate();
+        return "/devlogin";
+    }
+
     @RequestMapping("/flatform/app/list")
     public String list(HttpSession session,HttpServletRequest request){
 
@@ -166,6 +173,12 @@ public class DevController {
         String versionId = request.getParameter("id");
         appVersionService.updateById(appVersion, versionId);
         return "redirect:/dev/flatform/app/list";
+    }
+//    /flatform/app/appinfomodify?id=50
+    @RequestMapping("/flatform/app/appinfomodify")
+    public String appinfomodify(HttpServletRequest request,HttpSession session){
+        return null;
+
     }
 
 
