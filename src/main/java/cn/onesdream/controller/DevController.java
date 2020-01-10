@@ -4,11 +4,9 @@ import cn.onesdream.pojo.*;
 import cn.onesdream.service.*;
 
 import cn.onesdream.util.Data;
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -138,14 +136,35 @@ public class DevController {
     @RequestMapping("/flatform/app/appversionadd")
     public String appversionadd(HttpServletRequest request,HttpSession session){
         String id = request.getParameter("id");
-        List<AppVersion> appVersions = appVersionService.getAppVersion(id);
+        List<AppVersion> appVersions = appVersionService.getVersionByAppId(id);
+        request.setAttribute("appId", id);
         request.setAttribute("appVersionList", appVersions);
         return "/developer/appversionadd";
     }
 
     @RequestMapping("/flatform/app/addversionsave")
     public String addversionsave(HttpServletRequest request,HttpSession session,AppVersion appVersion){
-        appVersionService.insertOne(appVersion);
+        DevUser devUserSession = (DevUser) session.getAttribute("devUserSession");
+        Long devUserId = devUserSession.getId();
+        appVersionService.insertOne(appVersion,devUserId);
+        return "redirect:/dev/flatform/app/list";
+    }
+    //appversionmodify?vid=45&aid=51
+    @RequestMapping("/flatform/app/appversionmodify")
+    public String appversionmodify(HttpServletRequest request,HttpSession session){
+
+        List<AppVersion> appVersions = appVersionService.getVersionByAppId(request.getParameter("aid"));
+        request.setAttribute("appVersionList",appVersions);
+        AppVersion appVersion = appVersionService.getOneById(request.getParameter("vid"));
+        request.setAttribute("appVersion", appVersion);
+        return "/developer/appversionmodify";
+    }
+
+//    appversionmodifysave
+    @RequestMapping("/flatform/app/appversionmodifysave")
+    public String appversionmodifysave(HttpServletRequest request,HttpSession session,AppVersion appVersion){
+        String versionId = request.getParameter("id");
+        appVersionService.updateById(appVersion, versionId);
         return "redirect:/dev/flatform/app/list";
     }
 

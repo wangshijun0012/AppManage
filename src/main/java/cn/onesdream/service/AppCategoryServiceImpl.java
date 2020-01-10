@@ -4,12 +4,14 @@ import cn.onesdream.dao.AppCategoryMapper;
 import cn.onesdream.pojo.AppCategory;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
 import java.util.List;
 
 @Service
+@Transactional
 public class AppCategoryServiceImpl implements AppCategoryService {
 
     @Resource

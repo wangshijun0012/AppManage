@@ -5,12 +5,14 @@ import cn.onesdream.pojo.AppInfo;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 @Service
+@Transactional
 public class AppInfoServiceImpl implements AppInfoService {
     private static int pageSize = 4;
     @Resource

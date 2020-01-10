@@ -5,9 +5,11 @@ import cn.onesdream.dao.DataDictionaryMapper;
 import cn.onesdream.pojo.BackendUser;
 import cn.onesdream.pojo.DataDictionary;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 @Service
+@Transactional
 public class BackendUserServiceImpl implements BackendUserService {
     @Resource
     private BackendUserMapper backendUserMapper;

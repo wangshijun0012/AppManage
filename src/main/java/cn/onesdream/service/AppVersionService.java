@@ -5,7 +5,9 @@ import cn.onesdream.pojo.AppVersion;
 import java.util.List;
 
 public interface AppVersionService {
-    List<AppVersion> getAppVersion(String id);
-    Boolean insertOne(AppVersion appVersion);
+    List<AppVersion> getVersionByAppId(String appId);
+    AppVersion getOneById(String versionId);
+    Boolean insertOne(AppVersion appVersion, Long devUserId);
+    Boolean updateById(AppVersion appVersion, String id);
 
 }

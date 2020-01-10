@@ -8,11 +8,14 @@ import cn.onesdream.pojo.AppVersion;
 import cn.onesdream.pojo.DataDictionary;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 @Service
+@Transactional
 public class AppVersionServiceImpl implements AppVersionService {
     @Resource
     private AppVersionMapper appVersionMapper;
@@ -21,11 +24,11 @@ public class AppVersionServiceImpl implements AppVersionService {
     @Resource
     private DataDictionaryMapper dataDictionaryMapper;
     @Override
-    public List<AppVersion> getAppVersion(String id) {
+    public List<AppVersion> getVersionByAppId(String appId) {
         EntityWrapper<AppVersion> versionWrapper = new EntityWrapper();
-        versionWrapper.eq("appId", id);
+        versionWrapper.eq("appId", appId);
         List<AppVersion> versions = appVersionMapper.selectList(versionWrapper);
-        AppInfo appInfo = appInfoMapper.selectById(id);
+        AppInfo appInfo = appInfoMapper.selectById(appId);
         for(AppVersion appVersion:versions){
             Long status = appVersion.getPublishStatus();
             DataDictionary dictionary = new DataDictionary();
@@ -36,13 +39,41 @@ public class AppVersionServiceImpl implements AppVersionService {
             appVersion.setPublishStatusName(dataDictionary.getValueName());
             System.out.println(appVersion);
         }
+
         return versions;
     }
 
     @Override
-    public Boolean insertOne(AppVersion appVersion) {
+    public AppVersion getOneById(String versionId) {
+        return appVersionMapper.selectById(versionId);
+    }
+
+    @Override
+    public Boolean insertOne(AppVersion appVersion,Long devUserId) {
+        Date currentTime = new Date(System.currentTimeMillis());
+        appVersion.setCreatedBy(devUserId);
+        appVersion.setCreationDate(currentTime);
+        appVersion.setModifyDate(currentTime);
         Integer insert = appVersionMapper.insert(appVersion);
+        AppInfo appInfo = new AppInfo();
+        appInfo.setVersionId(appVersion.getId());
+        appInfo.setUpdateDate(currentTime);
+        EntityWrapper wrapper = new EntityWrapper();
+        wrapper.eq("id", appVersion.getAppId());
+        appInfoMapper.update(appInfo,wrapper);
         if(insert > 0 ){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public Boolean updateById(AppVersion appVersion, String id) {
+        EntityWrapper<AppVersion> wrapper = new EntityWrapper<>();
+        wrapper.eq("id", id);
+        appVersion.setModifyDate(new Date(System.currentTimeMillis()));
+        Integer update = appVersionMapper.update(appVersion, wrapper);
+        if(update > 0){
             return true;
         }
         return false;
