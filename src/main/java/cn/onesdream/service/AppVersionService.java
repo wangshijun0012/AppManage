@@ -9,5 +9,6 @@ public interface AppVersionService {
     AppVersion getOneById(String versionId);
     Boolean insertOne(AppVersion appVersion, Long devUserId);
     Boolean updateById(AppVersion appVersion, String id);
+    Boolean delByAppId(String appId);
 
 }

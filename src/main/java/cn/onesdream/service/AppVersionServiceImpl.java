@@ -58,6 +58,7 @@ public class AppVersionServiceImpl implements AppVersionService {
         AppInfo appInfo = new AppInfo();
         appInfo.setVersionId(appVersion.getId());
         appInfo.setUpdateDate(currentTime);
+        appInfo.setSoftwareSize(appVersion.getVersionSize());
         EntityWrapper wrapper = new EntityWrapper();
         wrapper.eq("id", appVersion.getAppId());
         appInfoMapper.update(appInfo,wrapper);
@@ -74,6 +75,17 @@ public class AppVersionServiceImpl implements AppVersionService {
         appVersion.setModifyDate(new Date(System.currentTimeMillis()));
         Integer update = appVersionMapper.update(appVersion, wrapper);
         if(update > 0){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public Boolean delByAppId(String appId) {
+        EntityWrapper<AppVersion> wrapper = new EntityWrapper<AppVersion>();
+        wrapper.eq("appId", appId);
+        Integer delete = appVersionMapper.delete(wrapper);
+        if(delete > 0){
             return true;
         }
         return false;

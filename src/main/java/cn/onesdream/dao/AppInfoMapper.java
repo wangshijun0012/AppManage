@@ -26,4 +26,6 @@ public interface AppInfoMapper  extends BaseMapper<AppInfo> {
     List<AppInfo> MutilSelectList(Page page, @Param("ew") Wrapper wrapper);
 
 
+
+
 }

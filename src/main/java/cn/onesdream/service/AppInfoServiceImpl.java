@@ -86,4 +86,39 @@ public class AppInfoServiceImpl implements AppInfoService {
         }
         return false;
     }
+
+    @Override
+    public AppInfo getById(String appId) {
+        AppInfo appInfo = appInfoMapper.selectById(appId);
+        return appInfo;
+    }
+
+    @Override
+    public Boolean updateById(AppInfo appInfo, String appId) {
+        EntityWrapper wrapper = new EntityWrapper();
+        wrapper.eq("id", appId);
+        Integer update = appInfoMapper.update(appInfo, wrapper);
+        if(update > 0){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public AppInfo getMutilInfoById(String appId) {
+        EntityWrapper<AppInfo> wrapper = new EntityWrapper<>();
+        wrapper.eq("id", appId);
+        List<AppInfo> appInfos = appInfoMapper.MutilSelectList(new Page(), wrapper);
+        AppInfo appInfo = appInfos.get(0);
+        return appInfo;
+    }
+
+    @Override
+    public Boolean delById(String appId) {
+        Integer delete = appInfoMapper.deleteById(Long.parseLong(appId));
+        if(delete > 0){
+            return true;
+        }
+        return false;
+    }
 }

@@ -119,11 +119,11 @@ public class DevController {
         String apkName = request.getParameter("APKName");
         Data data = new Data();
         if(apkName == null || "".equals(apkName)){
-            return data.isEmpty();
+            return data.apkIsEmpty();
         }else if(appInfoService.isExistByApk(apkName)){
-            return data.isExist();
+            return data.apkIsExist();
         }else{
-            return data.isNoExist();
+            return data.apkIsNoexist();
         }
 
     }
@@ -172,15 +172,51 @@ public class DevController {
     public String appversionmodifysave(HttpServletRequest request,HttpSession session,AppVersion appVersion){
         String versionId = request.getParameter("id");
         appVersionService.updateById(appVersion, versionId);
+        AppInfo appInfo = new AppInfo();
+        appInfo.setUpdateDate(new Date(System.currentTimeMillis()));
+        appInfo.setSoftwareSize(appVersion.getVersionSize());
+        appInfoService.updateById(appInfo, appVersion.getAppId().toString());
         return "redirect:/dev/flatform/app/list";
     }
 //    /flatform/app/appinfomodify?id=50
     @RequestMapping("/flatform/app/appinfomodify")
     public String appinfomodify(HttpServletRequest request,HttpSession session){
-        return null;
+        String id = request.getParameter("id");
+        AppInfo appInfo = appInfoService.getById(id);
+        request.setAttribute("appInfo",appInfo);
+        return "/developer/appinfomodify";
 
     }
-
-
+//    appinfomodifysave
+    @RequestMapping("/flatform/app/appinfomodifysave")
+    public String appinfomodifysava(HttpServletRequest request,HttpSession session,AppInfo appInfo){
+        DevUser devUserSession = (DevUser) session.getAttribute("devUserSession");
+        appInfo.setModifyBy(devUserSession.getId());
+        appInfo.setModifyDate(new Date(System.currentTimeMillis()));
+        appInfoService.updateById(appInfo, appInfo.getId().toString());
+        return "redirect:/dev/flatform/app/list";
+    }
+//    appview?id=51
+    @RequestMapping("/flatform/app/appview")
+    public String appview(HttpServletRequest request,HttpSession session){
+        String id = request.getParameter("id");
+        AppInfo appInfo = appInfoService.getMutilInfoById(id);
+        List<AppVersion> appVersions = appVersionService.getVersionByAppId(id);
+        request.setAttribute("appInfo",appInfo);
+        request.setAttribute("appVersionList",appVersions);
+        return "/developer/appinfoview";
+    }
+//    delapp.json
+    @RequestMapping("/flatform/app/delapp.json")
+    @ResponseBody
+    public Object delapp(HttpServletRequest request,HttpSession session){
+        String id = request.getParameter("id");
+        System.out.println(id);
+        if(appInfoService.delById(id)){
+            appVersionService.delByAppId(id);
+            return new Data().delIsTrue();
+        }
+        return new Data().delIsNotExist();
+    }
 
 }

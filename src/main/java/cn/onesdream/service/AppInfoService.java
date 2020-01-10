@@ -11,4 +11,8 @@ public interface AppInfoService {
     Page<AppInfo> doAppListPage(HttpSession session, HttpServletRequest request);
     Boolean isExistByApk(String apkName);
     Boolean addApp(AppInfo appInfo);
+    AppInfo getById(String appId);
+    Boolean updateById(AppInfo appInfo,String appId);
+    AppInfo getMutilInfoById(String appId);
+    Boolean delById(String appId);
 }
