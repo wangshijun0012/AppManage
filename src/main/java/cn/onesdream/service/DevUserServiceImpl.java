@@ -33,12 +33,12 @@ public class DevUserServiceImpl implements DevUserService {
     @Override
     public Page<AppInfo> getTheList(HttpSession session, HttpServletRequest request){
         EntityWrapper wrapper = new EntityWrapper();
-        String softwareName = request.getParameter("querySoftwareName");
-        String queryStatus = request.getParameter("queryStatus");
-        String queryFlatformId = request.getParameter("queryFlatformId");
-        String queryCategoryLevel1 = request.getParameter("queryCategoryLevel1");
-        String queryCategoryLevel2 = request.getParameter("queryCategoryLevel2");
-        String queryCategoryLevel3 = request.getParameter("queryCategoryLevel3");
+        String softwareName = request.getParameter("querySoftwareName");//软件名称
+        String queryStatus = request.getParameter("queryStatus");//状态
+        String queryFlatformId = request.getParameter("queryFlatformId");//平台Id
+        String queryCategoryLevel1 = request.getParameter("queryCategoryLevel1");//类别等级1
+        String queryCategoryLevel2 = request.getParameter("queryCategoryLevel2");//类别等级2
+        String queryCategoryLevel3 = request.getParameter("queryCategoryLevel3");//类别等级3
 
         if(softwareName != null && !"".equals(softwareName)){
             wrapper.like("softwareName", softwareName);
@@ -64,19 +64,19 @@ public class DevUserServiceImpl implements DevUserService {
             wrapper.eq("categoryLevel3", queryCategoryLevel3);
             request.setAttribute("queryCategoryLevel3", queryCategoryLevel3);
         }
-        String currentPageNoStr = request.getParameter("pageIndex");
+        String currentPageNoStr = request.getParameter("pageIndex");//当前页码 字符串
 
-        Integer currentPageNo = null;
+        Integer currentPageNo = null;//当前页码
         if(currentPageNoStr == null){
              currentPageNo = 1;
         }else{
              currentPageNo = Integer.parseInt(currentPageNoStr);
         }
         Page<AppInfo> page = new Page<AppInfo>(currentPageNo,pageSize);
-        List<AppInfo> appInfos = appInfoMapper.MutilSelectList(page,wrapper);
+        List<AppInfo> appInfos = appInfoMapper.MutilSelectList(page,wrapper);//app信息
         page.setRecords(appInfos);
 
-        System.out.println(page);
+        System.err.println(page);
         return page;
     }
 

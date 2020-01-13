@@ -156,7 +156,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var="appInfo" items="${appInfoList }" varStatus="status">
+								<c:forEach var="appInfo" items="${appInfos }" varStatus="status">
 									<tr role="row" class="odd">
 										<td tabindex="0" class="sorting_1">${appInfo.softwareName}</td>
 										<td>${appInfo.APKName }</td>
@@ -168,9 +168,10 @@
 										<td>${appInfo.versionNo }</td>
 										<td>
 										<button type="button" class="btn btn-default checkApp" 
-											appinfoid="${appInfo.id }" versionid="${appInfo.versionId }" status="${appInfo.status }" 
+											appinfoid="${appInfo.id }" versionid="${appInfo.versionId }" status="${appInfo.status }"
 											statusname="${appInfo.statusName }"											
-											data-toggle="tooltip" data-placement="top" title="" data-original-title="查看并审核APP">审核</button>
+											data-toggle="tooltip" data-placement="top" title="" data-original-title="查看并审核APP">审核
+										</button>
 										</td>
 									</tr>
 								</c:forEach>

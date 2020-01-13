@@ -30,74 +30,76 @@ public class DevController {
     @Resource
     private AppCategoryService appCategoryService;
 
-//   开发者 登录页面
+    //   开发者 登录页面
     @RequestMapping("/login")
-    public String login(){
+    public String login() {
         return "/devlogin";
     }
-//    开发者登录处理
+
+    //    开发者登录处理
     @RequestMapping("/dologin")
-    public String dologin(HttpSession session, HttpServletRequest request){
+    public String dologin(HttpSession session, HttpServletRequest request) {
         String devCode = request.getParameter("devCode");
         String devPassword = request.getParameter("devPassword");
         DevUser devUser = devUserService.getTheUser(devCode, devPassword);
-        if(devUser != null){
+        if (devUser != null) {
             session.setAttribute("devUserSession", devUser);
             return "/developer/main";
-        }else{
-            request.setAttribute("error","用户名或密码错误！");
+        } else {
+            request.setAttribute("error", "用户名或密码错误！");
         }
         return "/devlogin";
     }
+
     //退出登录
     @RequestMapping("/loginOut")
     public String loginout(HttpSession Session) {
 //    清除session 返回主界面选择登录的模块
-        Session.removeAttribute(Constants.USER_SESSION);
-        return "redirect:../index.jsp";
+        Session.removeAttribute(Constants.DEV_USER_SESSION);
+        return "devlogin";
     }
 
     @RequestMapping("/flatform/app/list")
-    public String list(HttpSession session,HttpServletRequest request){
+    public String list(HttpSession session, HttpServletRequest request) {
 
         List<DataDictionary> allStatus = dataDictionaryService.getAllStatus();
         List<DataDictionary> allFlatForm = dataDictionaryService.getAllFlatForm();
         List list1 = (List) session.getAttribute("categoryLevel1List");
         List list2 = (List) session.getAttribute("categoryLevel2List");
         List list3 = (List) session.getAttribute("categoryLevel3List");
-        if(list1 == null || "".equals(list1)){
+        if (list1 == null || "".equals(list1)) {
             session.setAttribute("categoryLevel1List", appCategoryService.getLevel1());
             System.out.println(session.getAttribute("categoryLevel1List"));
         }
-        if(list2 == null || "".equals(list2)){
+        if (list2 == null || "".equals(list2)) {
             session.setAttribute("categoryLevel2List", appCategoryService.getLevel2());
         }
-        if(list3 == null || "".equals(list3)){
+        if (list3 == null || "".equals(list3)) {
             session.setAttribute("categoryLevel3List", appCategoryService.getLevel3());
         }
         Page<AppInfo> page = devUserService.getTheList(session, request);
         List<AppInfo> appInfos = page.getRecords();
         Long currentPageNo = null;
         String pageIndex = request.getParameter("pageIndex");
-        if(pageIndex == null){
+        if (pageIndex == null) {
             currentPageNo = 1L;
-        }else{
+        } else {
             currentPageNo = Long.parseLong(pageIndex);
         }
         HashMap<String, Long> map = new HashMap<>();
         map.put("totalCount", page.getTotal());
-        map.put("currentPageNo",currentPageNo);
+        map.put("currentPageNo", currentPageNo);
         map.put("totalPageCount", page.getPages());
         session.setAttribute("pages", map);
         session.setAttribute("appInfoList", appInfos);
-        session.setAttribute("statusList",allStatus);
+        session.setAttribute("statusList", allStatus);
         session.setAttribute("flatFormList", allFlatForm);
         return "/developer/appinfolist";
     }
 
     @RequestMapping("/flatform/app/categorylevellist.json")
     @ResponseBody
-    public Object levellist(HttpSession session,HttpServletRequest request){
+    public Object levellist(HttpSession session, HttpServletRequest request) {
         String pid = request.getParameter("pid");
         System.out.println(pid);
         List<AppCategory> levelByParent = appCategoryService.getLevelByParent(pid);

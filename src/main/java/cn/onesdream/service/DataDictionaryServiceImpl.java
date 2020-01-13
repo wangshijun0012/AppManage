@@ -13,7 +13,7 @@ import java.util.List;
 public class DataDictionaryServiceImpl implements DataDictionaryService {
     @Resource
     private DataDictionaryMapper dataDictionaryMapper;
-
+    //查询APP状态
     @Override
     public List<DataDictionary> getAllStatus() {
         EntityWrapper<DataDictionary> wrapper = new EntityWrapper<>();
@@ -21,11 +21,11 @@ public class DataDictionaryServiceImpl implements DataDictionaryService {
         List<DataDictionary> dictionaries = dataDictionaryMapper.selectList(wrapper);
         return dictionaries;
     }
-
+    //查询APP平台
     @Override
     public List<DataDictionary> getAllFlatForm() {
         EntityWrapper<DataDictionary> wrapper = new EntityWrapper<>();
-        wrapper.eq("typeCode", "APP_FLATFORM");
+        wrapper.eq("typeCode", "APP_FLATFORM");//条件 typeCode为APP_FLTFORM
         List<DataDictionary> dictionaries = dataDictionaryMapper.selectList(wrapper);
         return dictionaries;
     }

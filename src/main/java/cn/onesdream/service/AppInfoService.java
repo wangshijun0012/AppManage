@@ -2,14 +2,51 @@ package cn.onesdream.service;
 
 import cn.onesdream.pojo.AppInfo;
 import cn.onesdream.pojo.DataDictionary;
+import com.baomidou.mybatisplus.plugins.Page;
 import org.apache.ibatis.annotations.Param;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.net.http.HttpRequest;
 import java.util.List;
 
 /**
  * app信息 业务层
  */
 public interface AppInfoService {
+    /**
+     * 更新app状态/审核
+     *
+     * @param status
+     *
+     * @param id
+     *
+     * @return
+     *
+     * @throws Exception
+     */
+    boolean updateSatus(Long status, Integer id) throws Exception;
+    /**
+     *
+     * @param apkName
+     * @return
+     */
+    Boolean isExistByApk(String apkName);
+
+    /**
+     *APP列表页面
+     * @param session
+     * @param request
+     * @return
+     */
+    Page<AppInfo> doAppListPage(HttpSession session, HttpServletRequest request);
+
+    /**
+     *
+     * @param appInfo
+     * @return
+     */
+    Boolean addApp(AppInfo appInfo);
     /**
      * 按条件查询appinfo
      * @param softwareName 软件名
@@ -98,4 +135,5 @@ public interface AppInfoService {
      * @return boolean
      */
     boolean updateStatus(AppInfo appInfo);
+
 }
