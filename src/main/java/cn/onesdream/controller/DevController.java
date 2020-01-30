@@ -45,6 +45,10 @@ public class DevController {
         }
         return "/devlogin";
     }
+    @RequestMapping("/flatform/main")
+    public String main(HttpSession session, HttpServletRequest request){
+        return "/developer/main";
+    }
 
     @RequestMapping("logout")
     public String logout(HttpSession  session){
