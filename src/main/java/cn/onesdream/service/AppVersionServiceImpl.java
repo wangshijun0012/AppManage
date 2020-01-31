@@ -37,7 +37,6 @@ public class AppVersionServiceImpl implements AppVersionService {
             DataDictionary dataDictionary = dataDictionaryMapper.selectOne(dictionary);
             appVersion.setAppName(appInfo.getSoftwareName());
             appVersion.setPublishStatusName(dataDictionary.getValueName());
-            System.out.println(appVersion);
         }
 
         return versions;

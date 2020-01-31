@@ -63,7 +63,6 @@ public class AppInfoServiceImpl implements AppInfoService {
         List<AppInfo> appInfos = appInfoMapper.MutilSelectList(page,wrapper);
         page.setRecords(appInfos);
 
-        System.out.println(page);
         return page;
     }
 

@@ -66,7 +66,6 @@ public class DevController {
         List list3 = (List) session.getAttribute("categoryLevel3List");
         if(list1 == null || "".equals(list1)){
             session.setAttribute("categoryLevel1List", appCategoryService.getLevel1());
-            System.out.println(session.getAttribute("categoryLevel1List"));
         }
         if(list2 == null || "".equals(list2)){
             session.setAttribute("categoryLevel2List", appCategoryService.getLevel2());
@@ -215,12 +214,38 @@ public class DevController {
     @ResponseBody
     public Object delapp(HttpServletRequest request,HttpSession session){
         String id = request.getParameter("id");
-        System.out.println(id);
         if(appInfoService.delById(id)){
             appVersionService.delByAppId(id);
             return new Data().delIsTrue();
         }
         return new Data().delIsNotExist();
+    }
+    ///sale.json
+    @RequestMapping("/flatform/app/sale.json")
+    @ResponseBody
+    public Object sale(HttpServletRequest request,HttpSession session){
+        String id = request.getParameter("appId");
+        if(id != null){
+            AppInfo appInfo = appInfoService.getById(id);
+
+            Long status = appInfo.getStatus();
+            if(status == 5L ){
+                appInfo.setStatus(4L);
+                appInfoService.updateById(appInfo,id);
+                return new Data().error0().success();
+            }else if(status == 4L){
+                appInfo.setStatus(5L);
+                appInfoService.updateById(appInfo,id);
+                return new Data().error0().success();
+            }else{
+                return new Data().failed().errorparam000001();
+            }
+
+        }else{
+            return new Data().errorexception000001().failed();
+        }
+
+
     }
 
 }

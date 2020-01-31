@@ -115,8 +115,9 @@ $(document).on("click",".saleSwichOpen,.saleSwichClose",function(){
 
 var saleSwitchAjax = function(appId,obj){
 	$.ajax({
-		type:"PUT",
-		url:appId+"/sale.json",
+		type:"GET",
+		url:"sale.json",
+		data:{appId:appId},//请求参数
 		dataType:"json",
 		success:function(data){
 			/*

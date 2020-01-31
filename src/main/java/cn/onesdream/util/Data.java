@@ -10,6 +10,11 @@ public class Data {
     private String APKName;
     @JsonProperty("delResult")
     private String delResult;
+    @JsonProperty("resultMsg")
+    private String resultMsg;
+    @JsonProperty("errorCode")
+    private String errorCode;
+
     public Data apkIsEmpty(){
         this.APKName = "empty";
         return this;
@@ -34,6 +39,26 @@ public class Data {
     }
     public Data delIsNotExist(){
         this.delResult = "notexist";
+        return this;
+    }
+    public Data success(){
+        this.resultMsg = "success";
+        return this;
+    }
+    public Data failed(){
+        this.resultMsg = "failed";
+        return this;
+    }
+    public Data error0(){
+        this.errorCode = "0";
+        return this;
+    }
+    public Data errorexception000001(){
+        this.errorCode = "exception000001";
+        return this;
+    }
+    public Data errorparam000001(){
+        this.errorCode = "param000001";
         return this;
     }
 
