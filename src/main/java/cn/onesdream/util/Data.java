@@ -14,6 +14,8 @@ public class Data {
     private String resultMsg;
     @JsonProperty("errorCode")
     private String errorCode;
+    @JsonProperty("result")
+    private String result;
 
     public Data apkIsEmpty(){
         this.APKName = "empty";
@@ -43,10 +45,12 @@ public class Data {
     }
     public Data success(){
         this.resultMsg = "success";
+        this.result = "success";
         return this;
     }
     public Data failed(){
         this.resultMsg = "failed";
+        this.result = "failed";
         return this;
     }
     public Data error0(){

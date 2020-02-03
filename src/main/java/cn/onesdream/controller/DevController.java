@@ -7,10 +7,18 @@ import cn.onesdream.util.Data;
 import com.baomidou.mybatisplus.plugins.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintWriter;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -132,12 +140,85 @@ public class DevController {
     }
 
     @RequestMapping("/flatform/app/appinfoaddsave")
-    public String appaddsave(HttpSession session, HttpServletRequest request,AppInfo appInfo){
-        DevUser devUser = (DevUser) session.getAttribute("devUserSession");
+    public String appaddsave(HttpSession session, HttpServletRequest request, AppInfo appInfo, HttpServletResponse response,@RequestParam("a_logoPicPath") CommonsMultipartFile file) {
         if(appInfo.getAPKName() != null){
-            appInfo.setCreationDate(new Date(System.currentTimeMillis()));
-            appInfo.setCreatedBy(devUser.getId());
-            appInfoService.addApp(appInfo);
+            if(!file.isEmpty() && file.getSize() < 500*1024){
+                //获取文件名
+                String name = file.getOriginalFilename();
+                //允许的文件后缀名
+                String[] suffixList = {"jpg","gif","png","jpeg","bmp"};
+                //获取要上传的文件后缀名
+                String suffixOfName = name.substring(name.lastIndexOf(".") + 1 ,name.length());
+                //循环比较后缀名是否合法
+                Boolean isImg = false;
+                for(String str : suffixList){
+                    if(str.equals(suffixOfName)){
+                        InputStream fileInputStream = null;
+                        try {
+                            fileInputStream = file.getInputStream();
+                            Image src = javax.imageio.ImageIO.read(fileInputStream); //构造Image对象
+                            int wideth=src.getWidth(null); //得到源图宽
+                            int height=src.getHeight(null); //得到源图长
+                            //判断图片分辨率是否符合要求
+                            if(wideth > 1024 || height > 1024 || wideth < 18 || height < 18){
+                                isImg = false;
+                            }else{
+                                isImg = true;
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } finally {
+                            try {
+                                fileInputStream.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            break;
+                        }
+                    }
+                }
+                //后缀名不匹配则弹窗提示并返回页面
+                if(isImg == false){
+                    response.setContentType("text/html; charset=UTF-8"); //转码
+                    PrintWriter out = null;
+                    try {
+                        out = response.getWriter();
+                        out.flush();
+                        out.println("<script>");
+                        out.println("alert('文件类型或大小错误，请上传合法图片文件！');");
+                        out.println("history.back();");
+                        out.println("</script>");
+                        return "/developer/appinfoadd";
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }finally {
+                        out.close();
+                    }
+                }
+                //获取项目根目录
+                String rootPath = request.getServletContext().getRealPath("/");
+                String uploadPath = rootPath + "statics\\uploadfiles\\";
+                //判断上传目录是否存在，否则创建上传目录
+                File uploadDir = new File(uploadPath);
+                if(!uploadDir.exists()){
+                    uploadDir.mkdir();
+                }
+                //指定存放上传文件的目录及文件名
+                String uploadFilePath = uploadPath + appInfo.getAPKName() + "." + suffixOfName;
+                try {
+                    file.transferTo(new File(uploadFilePath));//把文件写入目标文件地址
+                    DevUser devUser = (DevUser) session.getAttribute("devUserSession");
+                    appInfo.setLogoPicPath("/statics/uploadfiles/" + appInfo.getAPKName() + "." + suffixOfName );
+                    appInfo.setLogoLocPath(uploadFilePath);
+                    appInfo.setDevId(devUser.getId());
+                    appInfo.setCreatedBy(devUser.getId());
+                    appInfoService.addApp(appInfo);
+                    return "redirect:/dev/flatform/app/list";
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    return "error";
+                }
+            }
             return "redirect:/dev/flatform/app/list";
         }
         return "error";
@@ -153,11 +234,45 @@ public class DevController {
     }
 
     @RequestMapping("/flatform/app/addversionsave")
-    public String addversionsave(HttpServletRequest request,HttpSession session,AppVersion appVersion){
-        DevUser devUserSession = (DevUser) session.getAttribute("devUserSession");
-        Long devUserId = devUserSession.getId();
-        appVersionService.insertOne(appVersion,devUserId);
-        return "redirect:/dev/flatform/app/list";
+    public String addversionsave(HttpServletRequest request, HttpServletResponse response,HttpSession session, AppVersion appVersion,@RequestParam("a_downloadLink") CommonsMultipartFile file){
+        if(!file.isEmpty()){
+            String name = file.getOriginalFilename();
+            String suffixOfName = name.substring(name.lastIndexOf(".") + 1 ,name.length());
+            String rootPath = request.getServletContext().getRealPath("/");
+            AppInfo appInfo = appInfoService.getById(appVersion.getAppId().toString());
+            String uploadFilePath = rootPath + "statics\\uploadfiles\\" + appInfo.getAPKName() + "-" + appVersion.getVersionNo() + "." + suffixOfName;
+            if("apk".equals(suffixOfName)){
+                try {
+                    file.transferTo(new File(uploadFilePath));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }else{
+                response.setContentType("text/html; charset=UTF-8"); //转码
+                PrintWriter out = null;
+                try {
+                    out = response.getWriter();
+                    out.flush();
+                    out.println("<script>");
+                    out.println("alert('文件类型或大小错误，请上传合法apk文件！');");
+                    out.println("history.back();");
+                    out.println("</script>");
+                    return "/developer/appversionadd";
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }finally {
+                    out.close();
+                }
+            }
+            DevUser devUserSession = (DevUser) session.getAttribute("devUserSession");
+            Long devUserId = devUserSession.getId();
+            appVersion.setApkLocPath(uploadFilePath);
+            appVersion.setDownloadLink("/statics/uploadfiles/" + appInfo.getAPKName() + "-" + appVersion.getVersionNo() + "." + suffixOfName );
+            appVersion.setApkFileName(appInfo.getAPKName() + "-" + appVersion.getVersionNo() + "." + suffixOfName);
+            appVersionService.insertOne(appVersion,devUserId);
+            return "redirect:/dev/flatform/app/list";
+        }
+        return "error";
     }
     //appversionmodify?vid=45&aid=51
     @RequestMapping("/flatform/app/appversionmodify")
@@ -172,14 +287,73 @@ public class DevController {
 
 //    appversionmodifysave
     @RequestMapping("/flatform/app/appversionmodifysave")
-    public String appversionmodifysave(HttpServletRequest request,HttpSession session,AppVersion appVersion){
-        String versionId = request.getParameter("id");
-        appVersionService.updateById(appVersion, versionId);
-        AppInfo appInfo = new AppInfo();
-        appInfo.setUpdateDate(new Date(System.currentTimeMillis()));
-        appInfo.setSoftwareSize(appVersion.getVersionSize());
-        appInfoService.updateById(appInfo, appVersion.getAppId().toString());
-        return "redirect:/dev/flatform/app/list";
+    public String appversionmodifysave(HttpServletRequest request,HttpSession session,HttpServletResponse response,AppVersion appVersion,@RequestParam("attach") CommonsMultipartFile file){
+        if(!file.isEmpty()){
+            String name = file.getOriginalFilename();
+            String suffixOfName = name.substring(name.lastIndexOf(".") + 1 ,name.length());
+            String rootPath = request.getServletContext().getRealPath("/");
+            AppInfo appInfo = appInfoService.getById(appVersion.getAppId().toString());
+            String uploadFilePath = rootPath + "statics\\uploadfiles\\" + appInfo.getAPKName() + "-" + appVersion.getVersionNo() + "." + suffixOfName;
+            if("apk".equals(suffixOfName)){
+                try {
+                    file.transferTo(new File(uploadFilePath));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }else{
+                response.setContentType("text/html; charset=UTF-8"); //转码
+                PrintWriter out = null;
+                try {
+                    out = response.getWriter();
+                    out.flush();
+                    out.println("<script>");
+                    out.println("alert('文件类型或大小错误，请上传合法apk文件！');");
+                    out.println("history.back();");
+                    out.println("</script>");
+                    return "/developer/appversionmodify";
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }finally {
+                    out.close();
+                }
+            }
+            String versionId = request.getParameter("id");
+            appVersion.setApkLocPath(uploadFilePath);
+            appVersion.setDownloadLink("/statics/uploadfiles/" + appInfo.getAPKName() + "-" + appVersion.getVersionNo() + "." + suffixOfName );
+            appVersion.setApkFileName(appInfo.getAPKName() + "-" + appVersion.getVersionNo() + "." + suffixOfName);
+            appVersionService.updateById(appVersion, versionId);
+            appInfo.setSoftwareSize(appVersion.getVersionSize());
+            appInfoService.updateById(appInfo, appVersion.getAppId().toString());
+            return "redirect:/dev/flatform/app/list";
+        }
+        return "error";
+    }
+//    delfile.json
+    @RequestMapping("/flatform/app/delfile.json")
+    @ResponseBody
+    public Object delfile(HttpServletRequest request,HttpSession session){
+        String id = request.getParameter("id");
+        String flag = request.getParameter("flag");
+        if(flag.equals("apk")) {
+            AppVersion appVersion = appVersionService.getOneById(id);
+            //特别注意以下两行，需要在applicationContext.xml里面的globalConfiguration类中添加对应属性
+            appVersion.setDownloadLink("");
+            appVersion.setApkLocPath("");
+            appVersion.setApkFileName("");
+            if (appVersionService.updateById(appVersion, id)) {
+                return new Data().success();
+            }
+            return new Data().failed();
+        }else if(flag.equals("logo")){
+            AppInfo appInfo = appInfoService.getById(id);
+            appInfo.setLogoPicPath("");
+            appInfo.setLogoLocPath("");
+            if(appInfoService.updateById(appInfo,id)){
+                return new Data().success();
+            }
+            return new Data().failed();
+        }
+        return "error";
     }
 //    /flatform/app/appinfomodify?id=50
     @RequestMapping("/flatform/app/appinfomodify")
@@ -192,12 +366,91 @@ public class DevController {
     }
 //    appinfomodifysave
     @RequestMapping("/flatform/app/appinfomodifysave")
-    public String appinfomodifysava(HttpServletRequest request,HttpSession session,AppInfo appInfo){
-        DevUser devUserSession = (DevUser) session.getAttribute("devUserSession");
-        appInfo.setModifyBy(devUserSession.getId());
-        appInfo.setModifyDate(new Date(System.currentTimeMillis()));
-        appInfoService.updateById(appInfo, appInfo.getId().toString());
-        return "redirect:/dev/flatform/app/list";
+    public String appinfomodifysava(HttpServletRequest request,HttpSession session,HttpServletResponse response,AppInfo appInfo,@RequestParam("attach") CommonsMultipartFile file){
+        if(appInfo.getAPKName() != null){
+            if(!file.isEmpty() && file.getSize() < 500*1024){
+                //获取文件名
+                String name = file.getOriginalFilename();
+                //允许的文件后缀名
+                String[] suffixList = {"jpg","gif","png","jpeg","bmp"};
+                //获取要上传的文件后缀名
+                String suffixOfName = name.substring(name.lastIndexOf(".") + 1 ,name.length());
+                //循环比较后缀名是否合法
+                Boolean isImg = false;
+                for(String str : suffixList){
+                    if(str.equals(suffixOfName)){
+                        InputStream fileInputStream = null;
+                        try {
+                            fileInputStream = file.getInputStream();
+                            Image src = javax.imageio.ImageIO.read(fileInputStream); //构造Image对象
+                            int wideth=src.getWidth(null); //得到源图宽
+                            int height=src.getHeight(null); //得到源图长
+                            //判断图片分辨率是否符合要求
+                            if(wideth > 1024 || height > 1024 || wideth < 18 || height < 18){
+                                isImg = false;
+                            }else{
+                                isImg = true;
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } finally {
+                            try {
+                                fileInputStream.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            break;
+                        }
+                    }
+                }
+                //后缀名不匹配则弹窗提示并返回页面
+                if(isImg == false){
+                    response.setContentType("text/html; charset=UTF-8"); //转码
+                    PrintWriter out = null;
+                    try {
+                        out = response.getWriter();
+                        out.flush();
+                        out.println("<script>");
+                        out.println("alert('文件类型或大小错误，请上传合法图片文件！');");
+                        out.println("history.back();");
+                        out.println("</script>");
+                        return "/developer/appinfoadd";
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }finally {
+                        out.close();
+                    }
+                }
+                //获取项目根目录
+                String rootPath = request.getServletContext().getRealPath("/");
+                String uploadPath = rootPath + "statics\\uploadfiles\\";
+                //判断上传目录是否存在，否则创建上传目录
+                File uploadDir = new File(uploadPath);
+                if(!uploadDir.exists()){
+                    uploadDir.mkdir();
+                }
+                //指定存放上传文件的目录及文件名
+                String uploadFilePath = uploadPath + appInfo.getAPKName() + "." + suffixOfName;
+                try {
+                    file.transferTo(new File(uploadFilePath));//把文件写入目标文件地址
+                    DevUser devUser = (DevUser) session.getAttribute("devUserSession");
+                    appInfo.setLogoPicPath("/statics/uploadfiles/" + appInfo.getAPKName() + "." + suffixOfName );
+                    appInfo.setLogoLocPath(uploadFilePath);
+                    appInfo.setModifyBy(devUser.getId());
+                    appInfo.setModifyDate(new Date(System.currentTimeMillis()));
+                    if( !appInfoService.updateById(appInfo,appInfo.getId().toString())){
+                        return "error";
+                    }
+                    return "redirect:/dev/flatform/app/list";
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    return "error";
+                }
+            }
+            return "error";
+        }
+
+        return "error";
     }
 //    appview?id=51
     @RequestMapping("/flatform/app/appview")

@@ -1,7 +1,10 @@
 package cn.onesdream.service;
 
 import cn.onesdream.dao.AppInfoMapper;
+import cn.onesdream.dao.AppVersionMapper;
+import cn.onesdream.dao.DataDictionaryMapper;
 import cn.onesdream.pojo.AppInfo;
+import cn.onesdream.pojo.DataDictionary;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import org.springframework.stereotype.Service;
@@ -10,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.List;
 @Service
 @Transactional
@@ -17,6 +21,8 @@ public class AppInfoServiceImpl implements AppInfoService {
     private static int pageSize = 4;
     @Resource
     private AppInfoMapper appInfoMapper;
+    @Resource
+    private DataDictionaryMapper dataDictionaryMapper;
     @Override
     public Page<AppInfo> doAppListPage(HttpSession session, HttpServletRequest request){
         EntityWrapper wrapper = new EntityWrapper();
@@ -79,6 +85,7 @@ public class AppInfoServiceImpl implements AppInfoService {
 
     @Override
     public Boolean addApp(AppInfo appInfo) {
+        appInfo.setCreationDate(new Date(System.currentTimeMillis()));
         Integer insert = appInfoMapper.insert(appInfo);
         if(insert>0){
             return true;
@@ -89,6 +96,11 @@ public class AppInfoServiceImpl implements AppInfoService {
     @Override
     public AppInfo getById(String appId) {
         AppInfo appInfo = appInfoMapper.selectById(appId);
+        DataDictionary dataDictionary = new DataDictionary();
+        dataDictionary.setTypeCode("APP_STATUS");
+        dataDictionary.setValueId(appInfo.getStatus());
+        String valueName = dataDictionaryMapper.selectOne(dataDictionary).getValueName();
+        appInfo.setStatusName(valueName);
         return appInfo;
     }
 
@@ -96,6 +108,7 @@ public class AppInfoServiceImpl implements AppInfoService {
     public Boolean updateById(AppInfo appInfo, String appId) {
         EntityWrapper wrapper = new EntityWrapper();
         wrapper.eq("id", appId);
+        appInfo.setUpdateDate(new Date(System.currentTimeMillis()));
         Integer update = appInfoMapper.update(appInfo, wrapper);
         if(update > 0){
             return true;
