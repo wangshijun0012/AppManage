@@ -12,7 +12,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         if(request.getSession().getAttribute("devUserSession") == null && request.getSession().getAttribute("userSession") == null){
-            response.sendRedirect("/dev/login");
+            response.sendRedirect("/index.jsp");
             return false;
         }
             return true;

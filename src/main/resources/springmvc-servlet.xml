@@ -54,6 +54,7 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
             <mvc:exclude-mapping path="/backend/dologin"/>
             <mvc:exclude-mapping path="/dev/dologin"/><!--拦截例外-->
             <mvc:exclude-mapping path="/statics/**"/>
+            <mvc:exclude-mapping path="/index.jsp"/>
             <bean class="cn.onesdream.interceptor.LoginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>

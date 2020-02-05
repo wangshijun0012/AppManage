@@ -36,6 +36,10 @@ public class DevController {
     private AppInfoService appInfoService;
     @Resource
     private AppVersionService appVersionService;
+    @RequestMapping("/index")
+    public String index(){
+        return "/index";
+    }
     @RequestMapping("/login")
     public String login(){
         return "/devlogin";
