@@ -50,6 +50,8 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
         <mvc:interceptor>
             <mvc:mapping path="/**"/><!--所有请求都进行拦截-->
             <mvc:exclude-mapping path="/dev/login"/><!--拦截例外-->
+            <mvc:exclude-mapping path="/backend/login"/>
+            <mvc:exclude-mapping path="/backend/dologin"/>
             <mvc:exclude-mapping path="/dev/dologin"/><!--拦截例外-->
             <mvc:exclude-mapping path="/statics/**"/>
             <bean class="cn.onesdream.interceptor.LoginInterceptor"/>

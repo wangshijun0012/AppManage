@@ -61,7 +61,7 @@ public class DevController {
     @RequestMapping("logout")
     public String logout(HttpSession  session){
         session.invalidate();
-        return "/devlogin";
+        return "/index";
     }
 
     @RequestMapping("/flatform/app/list")

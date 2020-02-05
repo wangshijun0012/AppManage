@@ -51,4 +51,22 @@ public class AppCategoryServiceImpl implements AppCategoryService {
         return selectList;
     }
 
+    @Override
+    public String getLevel1Name(Long level1) {
+        AppCategory appCategory = appCategoryMapper.selectById(level1);
+        return appCategory.getCategoryName();
+    }
+
+    @Override
+    public String getLevel2Name(Long level2) {
+        AppCategory appCategory = appCategoryMapper.selectById(level2);
+        return appCategory.getCategoryName();
+    }
+
+    @Override
+    public String getLevel3Name(Long level3) {
+        AppCategory appCategory = appCategoryMapper.selectById(level3);
+        return appCategory.getCategoryName();
+    }
+
 }

@@ -11,6 +11,8 @@ public interface AppCategoryService {
     List<AppCategory> getLevelByParent(String pid);
     List<AppCategory> getLevel2();
     List<AppCategory> getLevel3();
-
+    String getLevel1Name(Long level1);
+    String getLevel2Name(Long level2);
+    String getLevel3Name(Long level3);
 
 }

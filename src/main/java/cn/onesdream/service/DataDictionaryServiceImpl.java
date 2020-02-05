@@ -28,4 +28,13 @@ public class DataDictionaryServiceImpl implements DataDictionaryService {
         List<DataDictionary> dictionaries = dataDictionaryMapper.selectList(wrapper);
         return dictionaries;
     }
+
+    @Override
+    public String getFlatFormNameById(Long flatFormId) {
+        DataDictionary dataDictionary = new DataDictionary();
+        dataDictionary.setTypeCode("APP_FLATFORM");
+        dataDictionary.setValueId(flatFormId);
+        DataDictionary dictionary = dataDictionaryMapper.selectOne(dataDictionary);
+        return dictionary.getValueName();
+    }
 }
