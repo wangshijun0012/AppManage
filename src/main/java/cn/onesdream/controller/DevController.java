@@ -201,7 +201,7 @@ public class DevController {
                 }
                 //获取项目根目录
                 String rootPath = request.getServletContext().getRealPath("/");
-                String uploadPath = rootPath + "statics\\uploadfiles\\";
+                String uploadPath = rootPath + "statics" + System.getProperty("file.separator") + "uploadfiles" + System.getProperty("file.separator");
                 //判断上传目录是否存在，否则创建上传目录
                 File uploadDir = new File(uploadPath);
                 if(!uploadDir.exists()){
@@ -244,7 +244,7 @@ public class DevController {
             String suffixOfName = name.substring(name.lastIndexOf(".") + 1 ,name.length());
             String rootPath = request.getServletContext().getRealPath("/");
             AppInfo appInfo = appInfoService.getById(appVersion.getAppId().toString());
-            String uploadFilePath = rootPath + "statics\\uploadfiles\\" + appInfo.getAPKName() + "-" + appVersion.getVersionNo() + "." + suffixOfName;
+            String uploadFilePath = rootPath + "statics" + System.getProperty("file.separator") + "uploadfiles" + System.getProperty("file.separator") + appInfo.getAPKName() + "-" + appVersion.getVersionNo() + "." + suffixOfName;
             if("apk".equals(suffixOfName)){
                 try {
                     file.transferTo(new File(uploadFilePath));
@@ -297,7 +297,7 @@ public class DevController {
             String suffixOfName = name.substring(name.lastIndexOf(".") + 1 ,name.length());
             String rootPath = request.getServletContext().getRealPath("/");
             AppInfo appInfo = appInfoService.getById(appVersion.getAppId().toString());
-            String uploadFilePath = rootPath + "statics\\uploadfiles\\" + appInfo.getAPKName() + "-" + appVersion.getVersionNo() + "." + suffixOfName;
+            String uploadFilePath = rootPath + "statics" + System.getProperty("file.separator") + "uploadfiles" + System.getProperty("file.separator") + appInfo.getAPKName() + "-" + appVersion.getVersionNo() + "." + suffixOfName;
             if("apk".equals(suffixOfName)){
                 try {
                     file.transferTo(new File(uploadFilePath));
@@ -427,7 +427,7 @@ public class DevController {
                 }
                 //获取项目根目录
                 String rootPath = request.getServletContext().getRealPath("/");
-                String uploadPath = rootPath + "statics\\uploadfiles\\";
+                String uploadPath = rootPath + "statics" +System.getProperty("file.separator") + "uploadfiles" + System.getProperty("file.separator");
                 //判断上传目录是否存在，否则创建上传目录
                 File uploadDir = new File(uploadPath);
                 if(!uploadDir.exists()){
